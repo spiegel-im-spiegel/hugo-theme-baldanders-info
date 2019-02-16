@@ -1,11 +1,11 @@
-name = "Simple Text"
-license = "CC0-1.0"
-licenselink = "https://github.com/spiegel-im-spiegel/hugo-theme-text/blob/master/LICENSE"
-description = "Simple Text (Hugo Theme)"
-homepage = "https://text.baldanders.info/"
-tags = ["text", "blog"]
-features = ["text", "cc-license", "social", "disqus"]
-min_version = 0.14
+name = "baldanders-info"
+license = "CC-BY"
+licenselink = "https://github.com/spiegel-im-spiegel/hugo-theme-baldanders-info/blob/master/LICENSE"
+description = "Hugo Theme for Baldanders.info"
+homepage = "https://baldanders.info/"
+tags = ["blog", "text", "photo"]
+features = ["text", "photo", "cc-license", "social"]
+min_version = 0.54
 
 [author]
   name = "Spiegel"
