@@ -1,5 +1,23 @@
-{{ partial "json-ld-site.html" . }}{{ if .IsPage }}
-<script type="application/ld+json">
+{{ partial "json-ld-site.html" . }}{{ $maker := printf "%s#maker" .Site.BaseURL }}{{ if .Section }}
+<script type="application/ld+json">{{ $sec := .Section }}{{ $secURL := printf "/%s/" ($sec | urlize | absURL) }}{{ $secTitle := printf "Entries of %s" ($sec | humanize | title) }}
+{
+	"@context": "http://schema.org",
+	"@type": "Blog",
+	"@id": {{ $secURL | jsonify }},
+	"url": {{ $secURL | jsonify }},
+	"inLanguage": "{{ .Site.LanguageCode }}",
+	"name": {{ $secTitle | jsonify }},
+	"description": {{ $secTitle | jsonify }}{{ with .Site.Data.author }},
+	"publisher": {
+		"@id": {{ $maker | jsonify }}
+	},
+	"author": {
+		"@id": {{ $maker | jsonify }}
+	}{{ if .avatar }},
+	"image": "{{ .avatar | absURL }}"{{ end }}{{ end }}
+}
+</script>{{ end }}
+<script type="application/ld+json">{{ $breadcrumb := printf "%s#breadcrumb-list" .Permalink }}
 {
 	"@context": "http://schema.org",
 	"@type": "BreadcrumbList",
@@ -9,18 +27,14 @@
 			"@type": "ListItem",
 			"position": 1,
 			"item": {
-				"@id": "{{ .Site.BaseURL }}"
+				"@id": {{ .Site.BaseURL | jsonify }}
 			}
-		}{{ if .Section }},
+		}{{ if .Section }}{{ $secURL := printf "/%s/" .Section | urlize }},
 		{
 			"@type": "ListItem",
 			"position": 2,
 			"item": {
-				"@type": "Blog",
-				"@id": "{{ .Site.BaseURL }}{{ .Section }}/",
-				"url": "{{ .Site.BaseURL }}{{ .Section }}/",
-				"name": "{{ .Section }}"{{ with .Site.Author }}{{ if .avatar }},
-				"image": "{{ .avatar | absURL }}"{{ end }}{{ end }}
+				"@id": {{ $secURL | absURL | jsonify }}
 			}
 		}{{ end }}
 	]
@@ -30,27 +44,23 @@
 {
 	"@context": "http://schema.org",
 	"@type": "Article",
-	"@id": "{{ .Permalink }}",
-	"url": "{{ .Permalink }}",
-	"mainEntityOfPage": "{{ .Permalink }}",
-	"inLanguage": "{{ .Site.LanguageCode }}",
-	"name": {{ .Title | jsonify }}{{ if .Description }},
+	"@id": {{ .Permalink | jsonify }},
+	"url": {{ .Permalink | jsonify }},
+	"mainEntityOfPage": {{ .Permalink | jsonify }},
+	"inLanguage": {{ .Site.LanguageCode | jsonify }},
+	"name": {{ .Title | jsonify }},
 	"description": {{ .Description | jsonify }},
-	"headline": {{ .Description | jsonify }}{{ end }}{{if .Params.tags }},
+	"headline": {{ .Description | jsonify }}{{if .Params.tags }},
 	"keywords": "{{ delimit .Params.tags ", " }}"{{ end }},
-	"datePublished": {{ .Date.Format "2006-01-02T15:04:05-07:00" | jsonify }}{{ if .Params.update }},
-	"dateModified": {{ .Params.update | dateFormat "2006-01-02T15:04:05-07:00" | jsonify }}{{ end }},
+	"datePublished": {{ .Date.Format "2006-01-02T15:04:05-07:00" | jsonify }},
+	"dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | jsonify }}{{ with .Site.Data.author }},
 	"publisher": {
-		"@id": "{{ .Site.BaseURL }}#org"
-	}{{ with .Params.author }},
+		"@id": {{ $maker | jsonify }}
+	},
 	"author": {
-		"@type": "Person",
-		"@id": "{{ $.Permalink | absURL }}#maker",
-		"name": "{{ .name }}"{{ if .url }},
-		"url": "{{ .url }}"{{ end }}{{ if .avatar }},
-		"image": "{{ .avatar | absURL }}"{{ end }}
+		"@id": {{ $maker | jsonify }}
 	}{{ if .license }},
-	"license": "http://creativecommons.org/licenses/{{ .license }}/4.0/"{{ end }}{{ if .avatar }},
-	"image": "{{ .avatar | absURL }}"{{ end }}{{ end }}
+	"license": "http://creativecommons.org/licenses/{{ .license }}/4.0/"{{ end }}{{ end }}{{ with .Site.Data.site }}{{ with .image }},
+	"image": "{{ . | absURL }}"{{ end }}{{ end }}
 }
-</script>{{ end }}
+</script>

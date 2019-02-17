@@ -1,10 +1,10 @@
 {{ partial "top.html" . }}
 <head>
-{{ partial "header-terms.html" . }}
-<title>{{ .Title }} Cloud — {{ .Site.Title }}</title>
-<meta property="og:title" content="{{ .Title }} Cloud — {{ .Site.Title }}">
-<meta name="description" content="{{ .Title }} Cloud">
-<meta property="og:description" content="{{ .Title }} Cloud">{{ with .Site.Author }}{{ if .avatar }}
+{{ partial "header.html" . }}
+<title>List of {{ .Title | title }} — {{ .Site.Title }}</title>
+<meta property="og:title" content="List of {{ .Title | title | safeHTML }} — {{ .Site.Title | safeHTML }}">
+<meta name="description" content="List of {{ .Title | title | safeHTML }}">
+<meta property="og:description" content="List of {{ .Title | title | safeHTML }}">{{ with .Site.Data.author }}{{ if .avatar }}
 <meta property="og:image" content="{{ .avatar | absURL }}">{{ end }}{{ end }}
 
 {{ partial "json-ld-term.html" . }}
@@ -16,11 +16,9 @@
 
 <main>
 <article>
-<h1>{{ .Title }} Cloud</h1>
-<ul class="cloud">{{ $plural := .Data.Plural }}
-{{ range $key, $value := .Data.Terms }}{{ $count := len $value }}{{ $sz := add (math.Round (mul (math.Log $count) 5)) 5 }}
-	<li style="font-size:{{ $sz }}pt;"><a href="/{{ $plural }}/{{ $key | urlize }}" title="{{ $key }} ({{ $count }})">{{ $key }}</a></li>
-{{ end }}
+<h1>List of {{ .Title | title }}</h1>
+<ul class="cloud">{{ $plural := .Data.Plural }}{{ range $k, $v := .Data.Terms }}{{ $count := len $v }}{{ $sz := add (math.Round (mul (math.Log $count) 5)) 5 }}{{ $key := $k | lower | urlize }}{{ $keyURL := printf "/%s/%s/" $plural $key }}
+	<li style="font-size:{{ $sz }}pt;"><a href="{{ $keyURL | absURL }}" title="{{ $key }} ({{ $count }})">{{ $key }}</a></li>{{ end }}
 </ul>
 </article>
 </main>

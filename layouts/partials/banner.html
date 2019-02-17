@@ -1,4 +1,4 @@
 <header>
-<div id="sitetitle"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a> <a href='/index.xml' title='Feed'><i class='fas fa-rss'></i></a></div>
-{{ with .Site.Params.description }}<p>{{ . }}</p>{{ end }}
+<div id="sitetitle"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a> <a href="{{ .Site.RSSLink }}" title='Feed'><i class='fas fa-rss'></i></a></div>
+{{ with .Site.Data.site }}{{ with .description }}<p>{{ . }}</p>{{ end }}{{ end }}
 </header>

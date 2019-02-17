@@ -1,35 +1,35 @@
-{{ partial "json-ld-site.html" . }}
-<script type="application/ld+json">
-{
-	"@context": "http://schema.org",
-	"@type": "WebPage",
-	"@id": "{{ .Permalink }}",
-	"url": "{{ .Permalink }}",
-	"inLanguage": "{{ .Site.LanguageCode }}",
-	"name": "{{ .Title }} Cloud",
-	"description": "{{ .Title }} Cloud",
-	"publisher": {
-		"@id": "{{ .Site.BaseURL }}#org"
-	}{{ with .Site.Author }},
-	"author": {
-		"@id": "{{ $.Site.BaseURL }}#maker"
-	}{{ if .avatar }},
-	"image": "{{ .avatar | absURL }}"{{ end }}{{ end }}
-}
-</script>
-<script type="application/ld+json">
+{{ partial "json-ld-site.html" . }}{{ $maker := printf "%s#maker" .Site.BaseURL }}
+<script type="application/ld+json">{{ $breadcrumb := printf "%s#breadcrumb-list" .Permalink }}
 {
 	"@context": "http://schema.org",
 	"@type": "BreadcrumbList",
-	"@id": "{{ .Permalink }}#breadcrumb-list",
+	"@id": {{ $breadcrumb | jsonify }},
 	"itemListElement": [
 		{
 			"@type": "ListItem",
 			"position": 1,
 			"item": {
-				"@id": "{{ .Site.BaseURL }}"
+				"@id": {{ .Site.BaseURL | jsonify }}
 			}
 		}
 	]
+}
+</script>
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "WebPage",
+	"@id": {{ .Permalink | jsonify }},
+	"@url": {{ .Permalink | jsonify }},
+	"inLanguage": {{ .Site.LanguageCode | jsonify }},
+	"name": "{{ .Title }} Cloud",
+	"description": "{{ .Title }} Cloud",
+	"publisher": {
+		"@id": {{ $maker | jsonify }}
+	},
+	"author": {
+		"@id": {{ $maker | jsonify }}
+	}{{ with .Site.Data.site }}{{ with .image }}
+	"image": "{{ . | absURL }}"{{ end }}{{ end }}
 }
 </script>

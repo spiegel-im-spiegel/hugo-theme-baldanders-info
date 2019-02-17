@@ -1,41 +1,28 @@
-<script type="application/ld+json">
+<script type="application/ld+json">{{ $org := printf "%s#org" $.Site.BaseURL }}{{ $maker := printf "%s#maker" $.Site.BaseURL }}
 {
 	"@context": "http://schema.org",
 	"@type": "WebSite",
-	"@id": "{{ .Site.BaseURL }}",
-	"inLanguage": "{{ .Site.LanguageCode }}",
-	"name": "{{ .Site.Title }}",
-    "url": "{{ .Site.BaseURL }}",
+	"@id": {{ .Site.BaseURL | jsonify }},
+	"inLanguage": {{ .Site.LanguageCode | jsonify }},
+	"name": {{ .Site.Title | jsonify }},
+    "url": {{ .Site.BaseURL | jsonify }},
 	"publisher": {
-		"@id": "{{ .Site.BaseURL }}#org"
-	}{{ with .Site.Author }},
+		"@id": {{ $maker | jsonify }}
+	},
 	"author": {
-		"@id": "{{ $.Site.BaseURL }}#maker"
-	}{{ if .avatar }},
-	"image": "{{ .avatar | absURL }}"{{ end }}{{ end }}{{ with .Site.Params.description }},
-	"description": {{ . | jsonify }}{{ end }}
+		"@id": {{ $maker | jsonify }}
+	}{{ with .Site.Data.site }}{{ with .image }}
+	"image": "{{ . | absURL }}"{{ end }}{{ with .description }},
+	"description": {{ . | jsonify }}{{ end }}{{ end }}
 }
-</script>
-<script type="application/ld+json">
-{
-	"@context": "http://schema.org",
-	"@type": "Organization",
-	"@id": "{{ .Site.BaseURL }}#org",
-	"name": "{{ .Site.Title }}"{{ with .Site.Author }}{{ if .avatar }},
-	"logo": {
-		"@type": "ImageObject",
-		"@id": "{{ $.Site.BaseURL }}#logo",
-		"url": "{{ $.Site.BaseURL }}images/avatar.jpg"
-	}{{ end }}{{ end }}
-}
-</script>{{ with .Site.Author }}
+</script>{{ with .Site.Data.author }}
 <script type="application/ld+json">
 {
 	"@context": "http://schema.org",
 	"@type": "Person",
-	"@id": "{{ $.Site.BaseURL }}#maker",
-	"name": "{{ .name }}"{{ if .url }},
-	"url": "{{ .url }}"{{ end }}{{ if .avatar }},
-	"image": "{{ .avatar | absURL }}"{{ end }}
+	"@id": {{ $maker | jsonify }}{{ with .name }},
+	"name": {{ . | jsonify }}{{ end }}{{ with .url }},
+	"url": {{ . | jsonify }}{{ end }}{{ with .avatar }},
+	"image": "{{ . | absURL }}"{{ end }}
 }
 </script>{{ end }}

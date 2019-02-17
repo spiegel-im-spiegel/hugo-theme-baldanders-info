@@ -1,0 +1,4 @@
+{{ if .IsPage }}{{ with .Params.scripts }}{{ if .mermaidjs }}<script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({startOnLoad: true, theme: 'neutral', sequenceDiagram: {height: 40, mirrorActors: false}});
+</script>{{ end }}{{ end }}{{ end }}

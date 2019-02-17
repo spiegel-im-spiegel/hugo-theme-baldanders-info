@@ -1,0 +1,18 @@
+{
+  "title": {{ $.Site.Title | jsonify }},
+  "url": {{ .Permalink | jsonify }},
+  "feed": {{ .RSSLink | jsonify }},{{ with .Site.Params.description }}
+  "description": {{ . | jsonify }},{{ end }}
+  "entry": [{{ range $i, $v := first 10 .Data.Pages }}{{ if ne $i 0 }},{{ end }}{{ with $v }}
+    {
+      "title": {{ .Title | jsonify }},{{ with .Section }}
+      "section": {{ . | jsonify }},{{ end }}{{ with .Description }}
+      "description": {{ . | jsonify }},{{ end }}{{ with .Params.author }}{{ with .name }}
+      "author": {{ . | jsonify }},{{ end }}{{ with .license }}
+      "license": "http://creativecommons.org/licenses/{{ . }}/4.0/",{{ end }}{{ end }}
+      "url": {{ .Permalink | jsonify }},
+      "published": {{ .Date.UTC.Format "2006-01-02T15:04:05-07:00" | jsonify }},
+      "update": {{ .Lastmod.UTC.Format "2006-01-02T15:04:05-07:00" | jsonify }}
+    }{{ end }}{{ end }}
+  ]
+}

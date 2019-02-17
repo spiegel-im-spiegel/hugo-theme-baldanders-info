@@ -1,38 +1,20 @@
 <footer><!-- Footer Section -->
-{{ with .Params.author }}
-	<div class="userinfo">
-		<div class="userinfo-avater">
-			{{ if .avatar }}
-				{{ if .url }}<a href="{{ .url }}">{{ end }}<img src="{{ .avatar }}" width="48" height="48" alt="avatar">{{ if .url }}</a>{{ end }}
-			{{ else }}
-				<img src="/images/avatar.png" width="48" height="48" alt="avatar">
-			{{ end }}
-		</div>
-		<div class="userinfo-info" id="maker">
-			{{ if .name }}
-				{{ if $.IsPage }}Written{{ else }}Revised{{ end }} by {{ with .url }}<a href="{{ . }}" rel="cc:attributionURL" property="cc:attributionName">{{ else }}<span property="cc:attributionName">{{ end }}{{ .name }}{{ if .url }}</a>{{ else }}</span>{{ end }} in <time property='dc:dateCopyrighted'>{{ $.Date.Format "2006-01-02" }}</time>{{ with $.Params.update }} (revised in <time property='dc:modified'>{{ . | dateFormat "2006-01-02" }}</time>){{ end }}.
-				{{ with .license }}{{ partial "cc-license.html" . }}{{ end }}
-			{{ end }}
-			{{ partial "social.html" $ }}
-		</div>
+{{ $type := "Product" }}{{ if $.IsPage }}{{ if .Params.pageType }}{{ $type = .Params.pageType | humanize | title }}{{ else if .Site.Data.site.siteType }}{{ $type = .Site.Data.site.siteType | humanize | title }}{{ end }}{{ end }}
+{{ $pubdate := .Date.Format "2006-01-02" }}{{ $update := .Lastmod.Format "2006-01-02" }}
+{{ with .Site.Data.author }}{{ $imgURL := "/images/avatar.png" }}{{ with .avatar }}{{$imgURL = . }}{{ end }}<div class="userinfo">
+	<div class="userinfo-avater">
+		<a href="{{ .url | absURL }}"><img src="{{ $imgURL | absURL }}" width="48" height="48" alt="avatar" id="logo"></a>
 	</div>
-{{ else }}{{ with .Site.Author }}{{ $root := eq $.Site.Title $.Title }}
-	<div class="userinfo">
-		<div class="userinfo-avater">
-			{{ if .avatar }}
-				{{ if .url }}<a href="{{ .url }}">{{ end }}<img src="{{ .avatar }}" width="48" height="48" alt="avatar">{{ if .url }}</a>{{ end }}
-			{{ else }}
-				<img src="/images/avatar.png" width="48" height="48" alt="avatar">
-			{{ end }}
-		</div>
-		<div class="userinfo-info" id="maker">
-			{{ if .name }}
-				{{ if $.IsPage }}Written{{ else }}Revised{{ end }} by {{ with .url }}<a href="{{ . }}" rel="cc:attributionURL" property="cc:attributionName">{{ else }}<span property="cc:attributionName">{{ end }}{{ .name }}{{ if .url }}</a>{{ else }}</span>{{ end }}{{ if or $root $.IsNode }}{{ with $.Site.Params.since }}, <time property='dc:dateCopyrighted'>{{ . | dateFormat "2006" }}</time>{{ with $.Site.LastChange }} - <time property='dc:modified'>{{ . | dateFormat "2006" }}</time>{{ end }}{{ end }}{{ else }} in <time property='dc:dateCopyrighted'>{{ $.Date.Format "2006-01-02" }}</time>{{ with $.Params.update }} (revised in <time property='dc:modified'>{{ . | dateFormat "2006-01-02" }}</time>){{ end }}{{ end }}.
-				{{ with .license }}{{ partial "cc-license.html" . }}{{ end }}
-			{{ end }}
-			{{ partial "social.html" $ }}
-		</div>
+	<div class="userinfo-info" id="maker">
+		{{ $type }} by <a href="{{ .url | absURL }}" rel="cc:attributionURL" property="cc:attributionName">{{ .name }}</a>
+		{{ if or $.IsHome $.IsNode }}{{ with $.Site.Data.site }}, <time property='dc:dateCopyrighted'>{{ .since | dateFormat "2006" }}</time>-<time property='dc:modified'>{{ $.Site.LastChange | dateFormat "2006" }}</time>{{ end }}{{ else }}in <time property='dc:dateCopyrighted'>{{ $pubdate }}</time>{{ if ne $pubdate $update }} (revised in {{ $update }}){{ end }}{{ end }}
+		{{ with .license }}{{ partial "cc-license.html" . }}{{ end }}
 	</div>
-{{ end }}{{ end }}
+{{ partial "social.html" . }}
+</div>{{ end }}
+
+<nav>
 {{ partial "navi.html" . }}
+{{ partial "credit.html" . }}
+</nav>
 </footer><!-- Footer Section -->

@@ -1,26 +1,40 @@
-{{ partial "json-ld-site.html" . }}
-<script type="application/ld+json">
+{{ partial "json-ld-site.html" . }}{{ $maker := printf "%s#maker" .Site.BaseURL }}{{ if .Data.Plural }}
+<script type="application/ld+json">{{ $sec := .Data.Plural }}{{ $secURL := printf "/%s/" ($sec | urlize) }}{{ $secTitle := printf "List of %s" ($sec | humanize | title) }}
+{
+	"@context": "http://schema.org",
+	"@type": "WebPage",
+	"@id": {{ $secURL | absURL | jsonify }},
+	"url": {{ $secURL | absURL | jsonify }},
+	"inLanguage": "{{ .Site.LanguageCode }}",
+	"name": {{ $secTitle | jsonify }},
+	"description": {{ $secTitle | jsonify }},
+	"publisher": {
+		"@id": {{ $maker | jsonify }}
+	},
+	"author": {
+		"@id": {{ $maker | jsonify }}
+	}{{ with .Site.Data.site }}{{ with .image }}
+	"image": "{{ . | absURL }}"{{ end }}{{ end }}
+}
+</script>{{ end }}
+<script type="application/ld+json">{{ $breadcrumb := printf "%s#breadcrumb-list" .Permalink }}
 {
 	"@context": "http://schema.org",
 	"@type": "BreadcrumbList",
-	"@id": "{{ .Permalink }}#breadcrumb-list",
+	"@id": {{ $breadcrumb | jsonify }},
 	"itemListElement": [
 		{
 			"@type": "ListItem",
 			"position": 1,
 			"item": {
-				"@id": "{{ .Site.BaseURL }}"
+				"@id": {{ .Site.BaseURL | jsonify }}
 			}
-		}{{ if .Data.Plural }},
+		}{{ if .Data.Plural }}{{ $secURL := printf "/%s/" .Data.Plural | urlize }},
 		{
 			"@type": "ListItem",
 			"position": 2,
 			"item": {
-				"@type": "WebPage",
-				"@id": "{{ .Site.BaseURL }}{{ urlize .Data.Plural }}/",
-				"url": "{{ .Site.BaseURL }}{{ urlize .Data.Plural }}/",
-				"name": "{{ humanize .Data.Plural }}"{{ with .Site.Author }}{{ if .avatar }},
-				"image": "{{ .avatar | absURL }}"{{ end }}{{ end }}
+				"@id": {{ $secURL | absURL | jsonify }}
 			}
 		}{{ end }}
 	]
@@ -30,17 +44,17 @@
 {
 	"@context": "http://schema.org",
 	"@type": "WebPage",
-	"@id": "{{ .Permalink }}",
-	"url": "{{ .Permalink }}",
-	"inLanguage": "{{ .Site.LanguageCode }}",
-	"name": "Entries of {{ .Title }}{{ with .Data.Plural }} in {{ humanize . }}{{end }}",
-	"description": "Entries of {{ .Title }}{{ with .Data.Plural }} in {{ humanize . }}{{end }}",
+	"@id": {{ .Permalink | jsonify}},
+	"url": {{ .Permalink | jsonify }},
+	"inLanguage": {{ .Site.LanguageCode | jsonify }},
+	"name": "Entries of {{ .Title }}{{ with .Data.Plural }} in {{ . | humanize }}{{ end }}",
+	"description": "Entries of {{ .Title }}{{ with .Data.Plural }} in {{ . | humanize }}{{ end }}",
 	"publisher": {
-		"@id": "{{ .Site.BaseURL }}#org"
-	}{{ with .Site.Author }},
+		"@id": {{ $maker | jsonify }}
+	},
 	"author": {
-		"@id": "{{ $.Site.BaseURL }}#maker"
-	}{{ if .avatar }},
-	"image": "{{ .avatar | absURL }}"{{ end }}{{ end }}
+		"@id": {{ $maker | jsonify }}
+	}{{ with .Site.Data.site }}{{ with .image }}
+	"image": "{{ . | absURL }}"{{ end }}{{ end }}
 }
 </script>

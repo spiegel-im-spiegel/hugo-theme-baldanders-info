@@ -1,3 +1,15 @@
-{{ partial "header-core.html" . }}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">{{ with .Site.Data.site }}{{ with .favicon }}
+<link rel="icon" type="image/x-icon" href="{{ . }}">{{ end }}{{ with .favicon16png }}
+<link rel="icon" type="image/png" sizes="16x16" href="{{ . }}">{{ end }}{{ with .favicon32png }}
+<link rel="icon" type="image/png" sizes="32x32" href="{{ . }}">{{ end }}{{ with .favicon96png }}
+<link rel="icon" type="image/png" sizes="96x96" href="{{ . }}">{{ end }}{{ end }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{ .Hugo.Generator }}
+{{ partial "header-fonts.html" . }}
+<link rel="stylesheet" href="/css/main.css" type='text/css'>
+<link rel="stylesheet" href="/css/baldanders-info.css" type='text/css'>{{ if $.IsPage }}
+<link rel="stylesheet" href="/css/chroma-styles.css">
+{{ with .Params.scripts }}{{ if .mathjax }}{{ partial "mathjax.html" $ }}{{ end }}{{ else }}{{ partial "mathjax.html" $ }}{{ end }}{{end }}
 <link rel="alternate" href="{{ .Site.RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}">
 {{ partial "header-include.html" . }}

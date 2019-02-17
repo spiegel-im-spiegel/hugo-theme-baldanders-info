@@ -1,0 +1,10 @@
+<nav class="tags">{{ if or .Params.tags .Draft }}
+	<div><a href='{{"/tags/" | relURL }}'>Tags</a>:{{ range sort $.Params.tags }}{{ $tag := lower . }}{{ $tagURL := printf "/tags/%s/" $tag | urlize }} #<a href="{{ $tagURL | relURL }}">{{ . }}</a>{{ end }}{{ if .Draft }} <span class="caution">#draft</span>{{ end }}</div>{{ end }}
+	<div class="cloud">{{ with .Site.Data.author }}
+		{{ with .facebook }}<a href="http://www.facebook.com/share.php?u={{ $.Permalink }}" target="_blank"><span class="facebook-color"><i class="fab fa-facebook-square" aria-hidden="true"></i></span></a>{{ end }}
+		{{ with .twitter }}<a href="http://twitter.com/share?text={{ $.Title }}+from+@{{ . }}&amp;url={{ $.Permalink }}" target="_blank"><span class="twitter-color"><i class="fab fa-twitter-square" aria-hidden="true"></i></span></a>{{ end }}
+		<a href="https://getpocket.com/edit?url={{ $.Permalink }}&amp;title={{ $.Title }}" target="_blank"><span class="pocket-color"><i class="fab fa-get-pocket" aria-hidden="true"></i></span></a>
+		{{ with .flattr }}<a href="https://flattr.com/submit/auto?user_id={{ . }}&amp;url={{ $.Permalink }}&amp;title={{ $.Title }}" target="_blank"><span class="flattr-color"><i class="fas fa-sync-alt"></i> Flattr this</span></a>{{ end }}{{ end }}
+		<a href="https://github.com/spiegel-im-spiegel/spiegel-im-spiegel.github.io/commits/master{{ $.RelPermalink }}index.html">History</a>
+	</div>
+</nav>
