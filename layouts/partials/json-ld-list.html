@@ -1,4 +1,4 @@
-{{ partial "json-ld-site.html" . }}{{ $maker := printf "%s#maker" .Site.BaseURL }}{{ if .Data.Plural }}
+{{ partial "json-ld-site.html" . }}{{ $maker := printf "%s#maker" .Site.BaseURL }}{{ $org := printf "%s#org" $.Site.BaseURL }}{{ if .Data.Plural }}
 <script type="application/ld+json">{{ $sec := .Data.Plural }}{{ $secURL := printf "/%s/" ($sec | urlize) }}{{ $secTitle := printf "List of %s" ($sec | humanize | title) }}
 {
 	"@context": "http://schema.org",
@@ -9,11 +9,11 @@
 	"name": {{ $secTitle | jsonify }},
 	"description": {{ $secTitle | jsonify }},
 	"publisher": {
-		"@id": {{ $maker | jsonify }}
+		"@id": {{ $org | jsonify }}
 	},
 	"author": {
 		"@id": {{ $maker | jsonify }}
-	}{{ with .Site.Data.site }}{{ with .image }}
+	}{{ with .Site.Data.site }}{{ with .image }},
 	"image": "{{ . | absURL }}"{{ end }}{{ end }}
 }
 </script>{{ end }}
@@ -50,7 +50,7 @@
 	"name": "Entries of {{ .Title }}{{ with .Data.Plural }} in {{ . | humanize }}{{ end }}",
 	"description": "Entries of {{ .Title }}{{ with .Data.Plural }} in {{ . | humanize }}{{ end }}",
 	"publisher": {
-		"@id": {{ $maker | jsonify }}
+		"@id": {{ $org | jsonify }}
 	},
 	"author": {
 		"@id": {{ $maker | jsonify }}

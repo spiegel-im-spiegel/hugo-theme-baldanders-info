@@ -6,6 +6,7 @@
 <meta name="description" content="List of {{ .Title | title | safeHTML }}">
 <meta property="og:description" content="List of {{ .Title | title | safeHTML }}">{{ with .Site.Data.author }}{{ if .avatar }}
 <meta property="og:image" content="{{ .avatar | absURL }}">{{ end }}{{ end }}
+{{ partial "twitter-card.html" . }}
 
 {{ partial "json-ld-term.html" . }}
 </head>

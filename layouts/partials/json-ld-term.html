@@ -1,4 +1,4 @@
-{{ partial "json-ld-site.html" . }}{{ $maker := printf "%s#maker" .Site.BaseURL }}
+{{ partial "json-ld-site.html" . }}{{ $maker := printf "%s#maker" .Site.BaseURL }}{{ $org := printf "%s#org" $.Site.BaseURL }}
 <script type="application/ld+json">{{ $breadcrumb := printf "%s#breadcrumb-list" .Permalink }}
 {
 	"@context": "http://schema.org",
@@ -25,11 +25,11 @@
 	"name": "{{ .Title }} Cloud",
 	"description": "{{ .Title }} Cloud",
 	"publisher": {
-		"@id": {{ $maker | jsonify }}
+		"@id": {{ $org | jsonify }}
 	},
 	"author": {
 		"@id": {{ $maker | jsonify }}
-	}{{ with .Site.Data.site }}{{ with .image }}
+	}{{ with .Site.Data.site }}{{ with .image }},
 	"image": "{{ . | absURL }}"{{ end }}{{ end }}
 }
 </script>
