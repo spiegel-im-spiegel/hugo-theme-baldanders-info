@@ -7,7 +7,7 @@
     {
       "title": {{ .Title | jsonify }},{{ with .Section }}
       "section": {{ . | jsonify }},{{ end }}{{ with .Description }}
-      "description": {{ . | jsonify }},{{ end }}{{ with .Params.author }}{{ with .name }}
+      "description": {{ . | jsonify }},{{ end }}{{ with $.Site.Data.author }}{{ with .name }}
       "author": {{ . | jsonify }},{{ end }}{{ with .license }}
       "license": "http://creativecommons.org/licenses/{{ . }}/4.0/",{{ end }}{{ end }}
       "url": {{ .Permalink | jsonify }},
