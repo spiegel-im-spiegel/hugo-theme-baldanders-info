@@ -3,13 +3,13 @@
 {
 	"@context": "http://schema.org",
 	"@type": "BreadcrumbList",
-	"@id": {{ $breadcrumb | jsonify }},
+	"@id": {{ $breadcrumb }},
 	"itemListElement": [
 		{
 			"@type": "ListItem",
 			"position": 1,
 			"item": {
-				"@id": {{ .Site.BaseURL | jsonify }}
+				"@id": {{ .Site.BaseURL }}
 			}
 		}
 	]
@@ -19,16 +19,16 @@
 {
 	"@context": "http://schema.org",
 	"@type": "WebPage",
-	"@id": {{ .Permalink | jsonify }},
-	"@url": {{ .Permalink | jsonify }},
-	"inLanguage": {{ .Site.LanguageCode | jsonify }},
+	"@id": {{ .Permalink }},
+	"@url": {{ .Permalink }},
+	"inLanguage": {{ .Site.LanguageCode }},
 	"name": "{{ .Title }} Cloud",
 	"description": "{{ .Title }} Cloud",
 	"publisher": {
-		"@id": {{ $org | jsonify }}
+		"@id": {{ $org }}
 	},
 	"author": {
-		"@id": {{ $maker | jsonify }}
+		"@id": {{ $maker }}
 	}{{ with .Site.Data.site }}{{ with .image }},
 	"image": "{{ . | absURL }}"{{ end }}{{ end }}
 }
