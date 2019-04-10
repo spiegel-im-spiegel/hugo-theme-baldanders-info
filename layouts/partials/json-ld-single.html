@@ -5,7 +5,7 @@
 	"@type": "Blog",
 	"@id": {{ $secURL }},
 	"url": {{ $secURL }},
-	"inLanguage": "{{ .Site.LanguageCode }}",
+	"inLanguage": {{ .Site.LanguageCode }},
 	"name": {{ $secTitle }},
 	"description": {{ $secTitle }}{{ with .Site.Data.author }},
 	"publisher": {
@@ -14,14 +14,14 @@
 	"author": {
 		"@id": {{ $maker }}
 	}{{ if .avatar }},
-	"image": "{{ .avatar | absURL }}"{{ end }}{{ end }}
+	"image": {{ .avatar | absURL }}{{ end }}{{ end }}
 }
 </script>{{ end }}
 <script type="application/ld+json">{{ $breadcrumb := printf "%s#breadcrumb-list" .Permalink }}
 {
 	"@context": "http://schema.org",
 	"@type": "BreadcrumbList",
-	"@id": "{{ .Permalink }}#breadcrumb-list",
+	"@id": {{ $breadcrumb }},
 	"itemListElement": [
 		{
 			"@type": "ListItem",
@@ -61,6 +61,6 @@
 		"@id": {{ $maker }}
 	}{{ if .license }},
 	"license": "https://creativecommons.org/licenses/{{ .license }}/4.0/"{{ end }}{{ end }}{{ with .Site.Data.site }}{{ with .image }},
-	"image": "{{ . | absURL }}"{{ end }}{{ end }}
+	"image": {{ . | absURL }}{{ end }}{{ end }}
 }
 </script>

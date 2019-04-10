@@ -5,14 +5,14 @@
 	"@id": {{ .Site.BaseURL }},
 	"inLanguage": {{ .Site.LanguageCode }},
 	"name": {{ .Site.Title }},
-    "url": {{ .Site.BaseURL }},
+    "url": {{ $.Site.BaseURL }},
 	"publisher": {
 		"@id": {{ $org }}
 	},
 	"author": {
 		"@id": {{ $maker }}
 	}{{ with .Site.Data.site }}{{ with .image }},
-	"image": "{{ . | absURL }}"{{ end }}{{ with .description }},
+	"image": {{ . | absURL }}{{ end }}{{ with .description }},
 	"description": {{ . }}{{ end }}{{ end }}
 }
 </script>{{ with .Site.Data.author }}
@@ -25,7 +25,7 @@
 	"logo": {
 		"@type": "ImageObject",
 		"@id": {{ $logo }},
-		"url": "{{ . | absURL }}"
+		"url": {{ . | absURL }}
 	}{{ end }}
 }
 </script>
@@ -36,6 +36,6 @@
 	"@id": {{ $maker }}{{ with .name }},
 	"name": {{ . }}{{ end }}{{ with .url }},
 	"url": {{ . }}{{ end }}{{ with .avatar }},
-	"image": "{{ . | absURL }}"{{ end }}
+	"image": {{ . | absURL }}{{ end }}
 }
 </script>{{ end }}

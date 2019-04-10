@@ -5,7 +5,7 @@
 	"@type": "WebPage",
 	"@id": {{ $secURL | absURL }},
 	"url": {{ $secURL | absURL }},
-	"inLanguage": "{{ .Site.LanguageCode }}",
+	"inLanguage": {{ .Site.LanguageCode }},
 	"name": {{ $secTitle }},
 	"description": {{ $secTitle }},
 	"publisher": {
@@ -14,7 +14,7 @@
 	"author": {
 		"@id": {{ $maker }}
 	}{{ with .Site.Data.site }}{{ with .image }},
-	"image": "{{ . | absURL }}"{{ end }}{{ end }}
+	"image": {{ . | absURL }}{{ end }}{{ end }}
 }
 </script>{{ end }}
 <script type="application/ld+json">{{ $breadcrumb := printf "%s#breadcrumb-list" .Permalink }}
@@ -55,6 +55,6 @@
 	"author": {
 		"@id": {{ $maker }}
 	}{{ with .Site.Data.site }}{{ with .image }}
-	"image": "{{ . | absURL }}"{{ end }}{{ end }}
+	"image": {{ . | absURL }}{{ end }}{{ end }}
 }
 </script>
