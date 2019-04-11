@@ -1,0 +1,1 @@
+<div class="box"{{ with .Get "class" }} class="{{ . }}"{{ end }}{{ with .Get "lang" }} lang="{{ . }}"{{ end }}>{{ .Inner | markdownify }}</div>

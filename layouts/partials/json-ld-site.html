@@ -2,30 +2,30 @@
 {
 	"@context": "http://schema.org",
 	"@type": "WebSite",
-	"@id": {{ .Site.BaseURL | jsonify }},
-	"inLanguage": {{ .Site.LanguageCode | jsonify }},
-	"name": {{ .Site.Title | jsonify }},
-    "url": {{ .Site.BaseURL | jsonify }},
+	"@id": {{ .Site.BaseURL }},
+	"inLanguage": {{ .Site.LanguageCode }},
+	"name": {{ .Site.Title }},
+    "url": {{ $.Site.BaseURL }},
 	"publisher": {
-		"@id": {{ $org | jsonify }}
+		"@id": {{ $org }}
 	},
 	"author": {
-		"@id": {{ $maker | jsonify }}
+		"@id": {{ $maker }}
 	}{{ with .Site.Data.site }}{{ with .image }},
-	"image": "{{ . | absURL }}"{{ end }}{{ with .description }},
-	"description": {{ . | jsonify }}{{ end }}{{ end }}
+	"image": {{ . | absURL }}{{ end }}{{ with .description }},
+	"description": {{ . }}{{ end }}{{ end }}
 }
 </script>{{ with .Site.Data.author }}
 <script type="application/ld+json">
 {
 	"@context": "http://schema.org",
 	"@type": "Organization",
-	"@id": {{ $org | jsonify }}{{ with .name }},
-	"name": {{ . | jsonify }}{{ end }}{{ with .avatar }},
+	"@id": {{ $org }}{{ with .name }},
+	"name": {{ . }}{{ end }}{{ with .avatar }},
 	"logo": {
 		"@type": "ImageObject",
-		"@id": {{ $logo | jsonify }},
-		"url": "{{ . | absURL }}"
+		"@id": {{ $logo }},
+		"url": {{ . | absURL }}
 	}{{ end }}
 }
 </script>
@@ -33,9 +33,9 @@
 {
 	"@context": "http://schema.org",
 	"@type": "Person",
-	"@id": {{ $maker | jsonify }}{{ with .name }},
-	"name": {{ . | jsonify }}{{ end }}{{ with .url }},
-	"url": {{ . | jsonify }}{{ end }}{{ with .avatar }},
-	"image": "{{ . | absURL }}"{{ end }}
+	"@id": {{ $maker }}{{ with .name }},
+	"name": {{ . }}{{ end }}{{ with .url }},
+	"url": {{ . }}{{ end }}{{ with .avatar }},
+	"image": {{ . | absURL }}{{ end }}
 }
 </script>{{ end }}
