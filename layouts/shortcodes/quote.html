@@ -1,1 +1,1 @@
-{{ with .Get "lang" }}<q lang="{{ . }}">{{ else }}<q>{{ end }}{{ .Inner }}</q>
+{{ with .Get "lang" }}<q lang="{{ . }}">{{ else }}<q>{{ end }}{{ with .Get "type" }}{{ if eq . "md" }}{{ $.Inner | markdownify }}{{ else }}{{ $.Inner }}{{ end }}{{ else }}{{ .Inner }}{{ end }}</q>

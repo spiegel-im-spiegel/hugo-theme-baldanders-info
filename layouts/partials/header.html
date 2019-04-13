@@ -10,5 +10,6 @@
 <link rel="stylesheet" href="/css/baldanders-info.css" type='text/css'>{{ if $.IsPage }}
 <link rel="stylesheet" href="/css/chroma-styles.css">
 {{ with .Params.scripts }}{{ if .mathjax }}{{ partial "mathjax.html" $ }}{{ end }}{{ else }}{{ partial "mathjax.html" $ }}{{ end }}{{end }}{{ with .Site.Home.AlternativeOutputFormats.Get "RSS" }}
-<link rel="alternate" href="{{ .Permalink }}" type="application/rss+xml" title="{{ $.Site.Title | plainify }}">{{ end }}
+<link rel="alternate" href="{{ .Permalink }}" type="application/rss+xml" title="{{ $.Site.Title | plainify }}">{{ end }}{{ with .Site.Home.AlternativeOutputFormats.Get "JSON" }}
+<link rel="alternate" href="{{ .Permalink }}" type="application/json" title="{{ $.Site.Title | plainify }}">{{ end }}
 {{ partial "header-include.html" . }}
