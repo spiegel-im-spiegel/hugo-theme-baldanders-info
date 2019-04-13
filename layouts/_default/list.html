@@ -1,10 +1,11 @@
 {{ partial "top.html" . }}
-<head>
-{{ partial "header.html" . }}{{ $secTitle := "" }}{{ with .Data.Plural }}{{ $secTitle = printf " in %s" (. | humanize | title) }}{{ end }}
-<title>Entries of {{ .Title }}{{ $secTitle }} — {{ .Site.Title }}</title>
-<meta property="og:title" content="Entries of {{ .Title }}{{ $secTitle }} — {{ .Site.Title }}">
-<meta name="description" content="Entries of {{ .Title }}{{ $secTitle }}">
-<meta property="og:description" content="Entries of {{ .Title }}{{ $secTitle }}">{{ with .Site.Data.author }}{{ if .avatar }}
+<head prefix="og: http://ogp.me/ns#">{{ $title := .Title | plainify }}{{ $secTitle := "" }}{{ $secURL := "" }}{{ with .Data.Plural }}{{ $secTitle = . | humanize | title }}{{ $secURL = printf "/%s/" (. | urlize) }}{{ end }}{{ $siteTitle := .Site.Title | plainify }}
+{{ partial "header.html" . }}{{ with .AlternativeOutputFormats.Get "RSS" }}
+<link rel="alternate" href="{{ .Permalink }}" type="application/rss+xml" title="Entries of {{ $title }} — {{ $secTitle }} | {{ $siteTitle }}">{{ end }}
+<title>Entries of {{ $title }} — {{ $secTitle }} | {{ $siteTitle }}</title>
+<meta property="og:title" content="Entries of {{ $title }} — {{ $secTitle }} | {{ $siteTitle }}">
+<meta name="description" content="Entries of {{ $title }} in {{ $secTitle }}">
+<meta property="og:description" content="Entries of {{ $title }} in {{ $secTitle }}">{{ with .Site.Data.author }}{{ if .avatar }}
 <meta property="og:image" content="{{ .avatar | absURL }}">{{ end }}{{ end }}
 {{ partial "twitter-card.html" . }}
 
@@ -16,8 +17,8 @@
 {{ partial "banner.html" . }}
 
 <main>
-<article>{{ $secTitle := "" }}{{ $secURL := "" }}{{ with .Data.Plural }}{{ $secTitle = . | humanize | title }}{{ $secURL = printf "/%s/" (. | urlize) }}{{ end }}
-<h1>Entries of {{ .Title }} <a href='{{ .RSSLink }}' title='Feed'><i class='fas fa-rss'></i></a>{{ with .Data.Plural }} in <a href="{{ $secURL | absURL }}">{{ $secTitle }}</a>{{end }}</h1>
+<article>
+<h1>Entries of {{ $title }}{{ with .OutputFormats.Get "RSS" }} <a href='{{ .RelPermalink }}' title='Feed'><i class='fas fa-rss'></i></a>{{ end }}{{ with .Data.Plural }} in <a href="{{ $secURL | absURL }}">{{ $secTitle }}</a>{{end }}</h1>
 <ul class="title-list">{{ range .Data.Pages }}{{ partial "li.html" . }}{{ end }}</ul>
 </article>
 </main>

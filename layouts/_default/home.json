@@ -1,7 +1,7 @@
 {
   "title": {{ $.Site.Title | jsonify }},
-  "url": {{ .Permalink | jsonify }},
-  "feed": {{ .RSSLink | jsonify }},{{ with .Site.Params.description }}
+  "url": {{ .Permalink | jsonify }},{{ with .Site.Home.OutputFormats.Get "RSS" }}
+  "feed": {{ .Permalink | jsonify }},{{ end }}{{ with .Site.Params.description }}
   "description": {{ . | jsonify }},{{ end }}
   "entry": [{{ range $i, $v := first 10 .Data.Pages }}{{ if ne $i 0 }},{{ end }}{{ with $v }}
     {

@@ -1,4 +1,4 @@
 <header>
-<div id="sitetitle"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a> <a href="{{ .Site.RSSLink }}" title='Feed'><i class='fas fa-rss'></i></a></div>
+<div id="sitetitle"><a href="{{ .Site.BaseURL }}">{{ .Site.Title | plainify }}</a>{{ with .Site.Home.OutputFormats.Get "RSS" }} <a href="{{ .RelPermalink }}" title='Feed'><i class='fas fa-rss'></i></a>{{ end }}</div>
 {{ with .Site.Data.site }}{{ with .description }}<p>{{ . }}</p>{{ end }}{{ end }}
 </header>

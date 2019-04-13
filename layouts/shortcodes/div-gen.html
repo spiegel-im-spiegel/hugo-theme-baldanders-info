@@ -1,1 +1,1 @@
-<div{{ with .Get "class" }} class="{{ . }}"{{ end }}{{ with .Get "lang" }} lang="{{ . }}"{{ end }}>{{ .Inner }}</div>
+<div{{ with .Get "class" }} class="{{ . }}"{{ end }}{{ with .Get "lang" }} lang="{{ . }}"{{ end }}>{{ with .Get "type" }}{{ if eq . "md" }}{{ $.Inner | markdownify }}{{ else }}{{ $.Inner }}{{ end }}{{ else }}{{ .Inner }}{{ end }}</div>
