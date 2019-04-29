@@ -1,6 +1,7 @@
 <nav class="tags">{{ if or .Params.tags .Draft }}
 	<div><a href='{{"/tags/" | relURL }}'>Tags</a>:{{ range sort $.Params.tags }}{{ $tag := lower . }}{{ $tagURL := printf "/tags/%s/" $tag | urlize }} #<a href="{{ $tagURL | relURL }}">{{ . }}</a>{{ end }}{{ if .Draft }} <span class="caution">#draft</span>{{ end }}</div>{{ end }}
 	<div class="cloud">{{ with .Site.Data.author }}
+		<span class="share-color" title="Share this entry"><i class="fas fa-share-alt"></i></span>&nbsp;:&nbsp;
 		{{ with .facebook }}<a href="http://www.facebook.com/share.php?u={{ $.Permalink }}" target="_blank"><span class="facebook-color"><i class="fab fa-facebook-square" aria-hidden="true"></i></span></a>{{ end }}
 		{{ with .twitter }}<a href="http://twitter.com/share?text={{ $.Title }}+by+@{{ . }}&amp;url={{ $.Permalink }}" target="_blank"><span class="twitter-color"><i class="fab fa-twitter-square" aria-hidden="true"></i></span></a>{{ end }}
 		<a href="https://getpocket.com/edit?url={{ $.Permalink }}&amp;title={{ $.Title }}" target="_blank"><span class="pocket-color"><i class="fab fa-get-pocket" aria-hidden="true"></i></span></a>
