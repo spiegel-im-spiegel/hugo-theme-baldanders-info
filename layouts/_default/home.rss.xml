@@ -8,7 +8,7 @@
 	<icon>{{ . | absURL }}</icon>
 	<logo>{{ . | absURL}}</logo>{{ end }}{{ end }}
 
-	{{ range first 10 .Data.Pages }}<entry>
+	{{ range first 10 .Site.RegularPages }}<entry>
 		<title>{{ .Title | plainify }}</title>{{ with .Section }}{{ $secURL := printf "/%s/" . | urlize }}
 		<category term="{{ . }}" label="{{ . }}" scheme="{{ $secURL | absURL }}" />{{ end }}
 		<link rel="alternate" type="text/html" href="{{ .Permalink }}" />
