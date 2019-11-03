@@ -54,7 +54,7 @@
 	},
 	"author": {
 		"@id": {{ $maker }}
-	}{{ with .Site.Data.site }}{{ with .image }}
+	}{{ with .Site.Data.site }}{{ with .image }},
 	"image": {{ . | absURL }}{{ end }}{{ end }}
 }
 </script>
