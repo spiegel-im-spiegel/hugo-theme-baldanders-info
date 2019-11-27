@@ -1,8 +1,8 @@
 {
   "title": {{ $.Site.Title | jsonify }},
   "url": {{ .Permalink | jsonify }},{{ with .Site.Home.OutputFormats.Get "RSS" }}
-  "feed": {{ .Permalink | jsonify }},{{ end }}{{ with .Site.Params.description }}
-  "description": {{ . | jsonify }},{{ end }}
+  "feed": {{ .Permalink | jsonify }},{{ end }}{{ with .Site.Data.site }}{{ with .description }}
+  "description": {{ . | jsonify }},{{ end }}{{ end }}
   "entry": [{{ range $i, $v := first 10 .Site.RegularPages }}{{ if ne $i 0 }},{{ end }}{{ with $v }}
     {
       "title": {{ .Title | jsonify }},{{ with .Section }}
