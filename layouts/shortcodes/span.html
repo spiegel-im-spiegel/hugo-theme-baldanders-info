@@ -1,1 +1,1 @@
-{{ with .Get "lang" }}<span lang="{{ . }}">{{ else }}<span>{{ end }}{{ with .Get "type" }}{{ if eq . "md" }}{{ $.Inner | markdownify }}{{ else }}{{ $.Inner }}{{ end }}{{ else }}{{ .Inner }}{{ end }}</span>
+{{ with .Get "lang" }}<span lang="{{ . }}">{{ else }}<span>{{ end }}{{ with .Get "type" }}{{ $.Inner | $.Page.RenderString (dict "display" "block" "markup" .) }}{{ else }}{{ .Inner }}{{ end }}</span>
