@@ -52,6 +52,7 @@
 	"description": {{ .Description }},
 	"headline": {{ .Description }}{{if .Params.tags }},
 	"keywords": "{{ delimit .Params.tags ", " }}"{{ end }},
+	"image": {{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ .Site.Data.section.site.image | absURL }}{{ end }},
 	"datePublished": {{ .Date.UTC.Format "2006-01-02T15:04:05-07:00" }},
 	"dateModified": {{ .Lastmod.UTC.Format "2006-01-02T15:04:05-07:00" }}{{ with .Site.Data.author }},
 	"publisher": {
@@ -60,7 +61,6 @@
 	"author": {
 		"@id": {{ $maker }}
 	}{{ if .license }},
-	"license": "https://creativecommons.org/licenses/{{ .license }}/4.0/"{{ end }}{{ end }}{{ with .Site.Data.site }}{{ with .image }},
-	"image": {{ . | absURL }}{{ end }}{{ end }}
+	"license": "https://creativecommons.org/licenses/{{ .license }}/4.0/"{{ end }}{{ end }}
 }
 </script>

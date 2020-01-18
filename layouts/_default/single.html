@@ -1,11 +1,11 @@
 {{ partial "top.html" . }}
 <head prefix="og: http://ogp.me/ns#">{{ $title := .Title | plainify }}{{ $siteTitle := .Site.Title | plainify }}{{ $desc := .Description | plainify | safeHTML }}
 {{ partial "header.html" . }}
-<title>{{ $title }} — {{ $siteTitle }}</title>
-<meta property="og:title" content="{{ $title }} — {{ $siteTitle }}">
+<title>{{ $title }} | {{ $siteTitle }}</title>
+<meta property="og:title" content="{{ $title }} | {{ $siteTitle }}">
 <meta name="description" content="{{ $desc }}">
-<meta property="og:description" content="{{ $desc }}">{{ with .Site.Data.site }}{{ with .image }}
-<meta property="og:image" content="{{ . | absURL }}">{{ end }}{{ end }}{{ with .Site.Data.author }}{{ if .name }}
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:image" content="{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ .Site.Data.site.image | absURL }}{{ end }}">{{ with .Site.Data.author }}{{ if .name }}
 <meta name="author" content="{{ .name }}">{{ end }}{{ end }}
 {{ partial "twitter-card.html" . }}
 {{ partial "header-nav.html" . }}
@@ -20,7 +20,8 @@
 <main>
 <article>{{ $secURL := "" }}{{ with .Section }}{{ $secURL = printf "/%s/" (. | urlize) }}{{ end }}
 <h1>{{ $title }}{{ with .Section }} [<a href="{{ $secURL | absURL }}">{{ .Section | plainify | humanize | title }}</a>]{{ end }}</h1>
-{{ partial "navi-tag.html" . }}
+{{ partial "navi-tag.html" . }}{{ if .Site.Data.site.poweredBy }}{{ if eq .Site.Data.site.poweredBy "github" }}
+{{ partial "navi-history.html" . }}{{ end }}{{ end }}
 
 <section>
 {{ .Content }}
