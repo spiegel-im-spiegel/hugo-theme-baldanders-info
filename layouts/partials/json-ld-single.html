@@ -52,7 +52,7 @@
 	"description": {{ .Description }},
 	"headline": {{ .Description }}{{if .Params.tags }},
 	"keywords": "{{ delimit .Params.tags ", " }}"{{ end }},
-	"image": {{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ .Site.Data.section.site.image | absURL }}{{ end }},
+	"image": {{ with .Params.image }}{{ . | absURL }}{{ else }}{{ .Site.Data.site.image | absURL }}{{ end }},
 	"datePublished": {{ .Date.UTC.Format "2006-01-02T15:04:05-07:00" }},
 	"dateModified": {{ .Lastmod.UTC.Format "2006-01-02T15:04:05-07:00" }}{{ with .Site.Data.author }},
 	"publisher": {
