@@ -1,0 +1,5 @@
+<span>{{- range $i, $s := .Params -}}
+{{- if gt $i 0 -}}&nbsp;{{- end -}}
+{{- if eq $s "check" -}}<i class="fas fa-check"></i>{{- end -}}
+{{- if eq $s "pdf" -}}<i class="far fa-file-pdf"></i>{{- end -}}
+{{- end -}}</span>
