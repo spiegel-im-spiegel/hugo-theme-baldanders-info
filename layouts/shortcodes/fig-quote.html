@@ -1,4 +1,4 @@
 {{ with .Get "lang" }}<figure lang="{{ . }}">{{ else }}<figure>{{ end }}
 <blockquote>{{ with .Get "type" }}{{ $.Inner | $.Page.RenderString (dict "markup" .) }}{{ else }}{{ .Inner }}{{ end }}</blockquote>{{ if .Get "title"}}
-<figcaption>via <q>{{ with .Get "link"}}<a href="{{.}}">{{ end }}{{ .Get "title" }}{{ with .Get "link"}}</a>{{ end }}</q></figcaption>
+<figcaption>{{ with .Get "lang" }}via {{ else }}{{ end }}<q>{{ with .Get "link"}}<a href="{{.}}">{{ end }}{{ .Get "title" }}{{ with .Get "link"}}</a>{{ end }}</q>{{ with .Get "lang" }}{{ else }}より{{ end }}</figcaption>
 {{ end }}</figure>
