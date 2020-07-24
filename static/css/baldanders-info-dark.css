@@ -2,8 +2,8 @@
 /**
  * text-baldanders.css -- Cascading Style Sheet (for this theme)
  */
-@import url("./main.css");
-@import url("./chroma-styles.css");
+@import url("./main-dark.css");
+@import url("./chroma-styles-dark.css");
 
  /* page layout */
 #container {
@@ -18,13 +18,13 @@
   width: 100%;
   margin-bottom: 0.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: solid thin lightgray;
+  border-bottom: solid thin slategray;
 }
 header #sitetitle {
   font-variant: small-caps;
   font-size: x-large;
   margin: 0;
-  color: green;
+  color: wheat;
   background-color: transparent;
 }
 header p {
@@ -34,19 +34,19 @@ header p {
   padding: 0;
 }
 header a:link {
-  color: green;
+  color: wheat;
   background-color: transparent;
 }
 header a:visited {
-  color: green;
+  color: wheat;
   background-color: transparent;
 }
 header a:active {
-  color: green;
+  color: wheat;
   background-color: transparent;
 }
 header a:hover {
-  color: green;
+  color: wheat;
   background-color: transparent;
   text-decoration: none;
 }
@@ -54,7 +54,7 @@ header a:hover {
 /* main layout */
 main h1 {
   font-weight: 700;
-  border: solid thin gray;
+  border: solid thin slategray;
   margin: 0 0 1rem 0;
   padding: 0 0.5rem 2px 2px;
 }
@@ -68,7 +68,7 @@ main h3, main h4, main h5, main h6 {
 }
 main blockquote, main pre {
   line-height: 1.2;
-  border: solid thin lightgray;
+  border: solid thin slategray;
 }
 main p, main blockquote, main li {
   text-align: justify;
@@ -92,21 +92,21 @@ main div.footnotes, main section.footnotes {
 }
 
 main div.footnotes hr, main section.footnotes hr {
-  border: solid thin lightgray;
+  border: solid thin slategray;
 }
 
 main div.mermaid {
-  color: black;
-  background-color: white;
+  color:black;
+  background-color:white;
 }
 
 main div.box {
   color: inherit;
-  background-color: white;
+  background-color: transparent;
   margin: 1rem 0rem 1rem 0.4rem;
   padding: 4px;
   line-height: 1.2;
-  border: solid thin lightgray;
+  border: solid thin slategray;
 }
 
 main div.noextension {
@@ -125,7 +125,7 @@ main div.noextension {
 main .hreview {
   font-size: small;
   line-height: 1.2;
-  border: solid thin gray;
+  border: solid thin slategray;
   margin: 1rem 0rem;
   padding: 2px;
 }
@@ -212,7 +212,7 @@ main nav.breadcrumb {
   line-height: 1.2;
   margin-top: 0.5rem;
   padding-top: 0.1rem;
-  border-top: solid thin lightgray;
+  border-top: solid thin slategray;
 }
 footer .userinfo {
   display: flex;
@@ -247,11 +247,11 @@ ul.social > li {
 
 /* icon color */
 span.github-color {
-  color: black;
+  color: white;
   background-color: transparent;
 }
 span.share-color {
-  color: darkgray;
+  color: slategray;
   background-color: transparent;
 }
 span.twitter-color {
@@ -259,19 +259,19 @@ span.twitter-color {
   background-color: transparent;
 }
 span.medium-color {
-  color: black;
+  color: inherit;
   background-color: transparent;
 }
 span.tumblr-color {
-  color: gray;
+  color: inherit;
   background-color: transparent;
 }
 span.instagram-color {
-  color: mediumvioletred;
+  color: coral;
   background-color: transparent;
 }
 span.flickr-color {
-  color: mediumblue;
+  color: white;
   background-color: transparent;
 }
 span.facebook-color {
@@ -283,7 +283,7 @@ span.linkedin-color {
   background-color: transparent;
 }
 span.envelope-color {
-  color: transparent;
+  color: inherit;
   background-color: transparent;
 }
 span.pocket-color {
@@ -300,7 +300,7 @@ footer nav {
 
 /* Feedback */
 aside.feedback h1 {
-  border: solid thin gray;
+  border: solid thin slategray;
   margin: 0 0 1rem 0;
   padding: 0 0.5rem 2px 2px;
 }

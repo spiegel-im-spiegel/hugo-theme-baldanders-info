@@ -1,6 +1,20 @@
 <span>{{- range $i, $s := .Params -}}
 {{- if gt $i 0 -}}&nbsp;{{- end -}}
 {{- if eq $s "check" -}}<i class="fas fa-check"></i>{{- end -}}
+{{- if eq $s "rss" -}}<i class="fas fa-rss"></i>{{- end -}}
+{{- if eq $s "share" -}}<span class="share-color"><i class="fas fa-share-square"></i></span>{{- end -}}
+{{- if eq $s "github" -}}<span class="github-color"><i class="fab fa-github"></i></span>{{- end -}}
+{{- if eq $s "twitter" -}}<span class="twitter-color"><i class="fab fa-twitter"></i></span>{{- end -}}
+{{- if eq $s "twitter-sq" -}}<span class="twitter-color"><i class="fab fa-twitter-square"></i></span>{{- end -}}
+{{- if eq $s "medium" -}}<span class="medium-color"><i class="fab fa-medium-m"></i></span>{{- end -}}
+{{- if eq $s "tumblr" -}}<span class="tumblr-color"><i class="fab fa-tumblr"></i></span>{{- end -}}
+{{- if eq $s "instagram" -}}<span class="instagram-color"><i class="fab fa-instagram"></i></span>{{- end -}}
+{{- if eq $s "flickr" -}}<span class="flickr-color"><i class="fab fa-flickr"></i></span>{{- end -}}
+{{- if eq $s "facebook" -}}<span class="facebook-color"><i class="fab fa-facebook-f"></i></span>{{- end -}}
+{{- if eq $s "facebook-sq" -}}<span class="facebook-color"><i class="fab fa-facebook-square"></i></span>{{- end -}}
+{{- if eq $s "linkedin" -}}<span class="linkedin-color"><i class="fab fa-linkedin-in"></i></span>{{- end -}}
+{{- if eq $s "pocket" -}}<span class="pocket-color"><i class="fab fa-get-pocket"></i></span>{{- end -}}
+{{- if eq $s "email" -}}<span class="envelope-color"><i class="fas fa-envelope"></i></span>{{- end -}}
 {{- if eq $s "pdf" -}}<i class="far fa-file-pdf"></i>{{- end -}}
 {{- if eq $s "css3" -}}<i class="fab fa-css3"></i>{{- end -}}
 {{- if eq $s "erlang" -}}<i class="fab fa-erlang"></i>{{- end -}}

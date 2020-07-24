@@ -5,27 +5,33 @@
 /* declaration of font-* */
 body {
   font-family: 'Noto Serif', 'NotoSerifJP-local', 'Noto Serif JP', serif;
-  font-weight: 400; /* normal */
+  font-weight: 500; /* normal */
   font-variant: normal;
   font-style: normal;
   font-size: medium;
   line-height: 1.4;
   /* font-smoothing: always; // Non-standard */
+  color: lavender;
+  background-color: rgb(20, 20, 40);
 }
 h1, h2, h3, h4, h5, h6, header, address, table th, dl > dt, em, strong, cite, *.caution, *.breadcrumb {
   font-family: 'Noto Sans', 'NotoSansJP-local', 'Noto Sans JP', sans-serif;
-  font-weight: 400; /* normal */
+  font-weight: 500; /* normal */
   font-weight: inherit;
   font-variant: inherit;
   font-style: inherit;
   font-size: inherit;
+  color: inherit;
+  background-color: inherit;
 }
 pre, tt, code, var, kbd, samp {
   font-family: 'Inconsolata', 'NotoSansJP-local', 'Noto Sans JP', monospace;
-  font-weight: 400; /* normal */
+  font-weight: 500; /* normal */
   font-variant: inherit;
   font-style: inherit;
   font-size: inherit;
+  color: inherit;
+  background-color: inherit;
 }
 h1, h2, h3, h4, h5, h6 {
   font-variant: small-caps;
@@ -98,7 +104,7 @@ pre {
 }
 blockquote, pre {
   color: inherit;
-  background-color: white;
+  background-color: transparent;
   margin: 1rem 0rem 1rem 0.4rem;
   padding: 4px;
 }
@@ -141,21 +147,21 @@ div.title-list > ul > li, ul.title-list > li {
 dl > dt {
   margin: 0;
   padding: 0 0.5rem;
-  border: solid thin gray;
+  border: solid thin slategray;
   color: inherit;
-  background-color: lightgray;
+  background-color: darkslategray;
 }
 dl > dd {
   margin: 0;
   padding: 0 0.5rem;
-  border: solid thin gray;
+  border: solid thin slategray;
   color: inherit;
-  background-color: white;
+  background-color: transparent;
 }
 table {
   caption-side: bottom;
   table-layout: auto;
-  border: solid thin gray;
+  border: solid thin slategray;
   border-collapse: collapse; /* need from firefox */
   border-spacing: 0 0; /* need from firefox */
   margin: 1rem auto 1rem auto;
@@ -166,27 +172,27 @@ table th {
   text-align: center;
   vertical-align: top;
   white-space: nowrap;
-  border: solid thin gray;
+  border: solid thin slategray;
   border-collapse: collapse;
   border-spacing: 0 0;
   margin: 0;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   color: inherit;
-  background-color: lightgray;
+  background-color: darkslategray;
 }
 table td {
   display: table-cell;
   /* text-align: left; */
   vertical-align: top;
-  border: solid thin gray;
+  border: solid thin slategray;
   border-collapse: collapse;
   border-spacing: 0 0;
   margin: 0;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   color: inherit;
-  background-color: white;
+  background-color: transparent;
 }
 table td.nowrap  {
   white-space: nowrap;
@@ -204,13 +210,13 @@ table.noborder th {
   border-style: hidden;
   border-width: 0;
   color: inherit;
-  background-color: white;
+  background-color: transparent;
 }
 table.noborder td {
   border-style: hidden;
   border-width: 0;
   color: inherit;
-  background-color: white;
+  background-color: transparent;
 }
 hr {
   border: 0;
@@ -253,17 +259,17 @@ sup, sub {
 }
 /* Style of Ancher Tag */
 a:link {
-  color: blue;
+  color: lightskyblue;
   background-color: transparent;
   text-decoration: none;
 }
 a:visited {
-  color: #000080;
+  color: lightskyblue;
   background-color: transparent;
   text-decoration: none;
 }
 a:active {
-  color: red;
+  color: lightskyblue;
   background-color: transparent;
   text-decoration: underline;
 }
@@ -294,7 +300,7 @@ a:hover>IMG {
 .right { text-align: right }
 .caution {
   font-weight: bolder;
-  color: red;
+  color: coral;
   background-color: transparent;
 }
 .smaller { font-size: smaller; }
