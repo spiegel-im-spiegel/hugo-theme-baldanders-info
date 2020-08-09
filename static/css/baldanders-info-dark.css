@@ -116,10 +116,14 @@ main div.noextension {
   padding-right: 0;
 }
 
-/* hreview */
+/* light/dark mode */
 main figure div.lightmode {
   color:black;
   background-color:white;
+}
+main figure div.darkmode {
+  color: lavender;
+  background-color: rgb(20, 20, 40);
 }
 
 /* hreview */
