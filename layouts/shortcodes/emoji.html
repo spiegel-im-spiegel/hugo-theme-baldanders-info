@@ -1,0 +1,10 @@
+{{- range $i, $s := .Params -}}
+{{- if gt $i 0 -}}&nbsp;{{- end -}}<abbr title="{{ $s }}">
+{{- if eq $s "ゴメン" -}}&#x1f647;
+{{- else if eq $s "ふむむ" -}}&#x1f914;
+{{- else if eq $s "はぁと" -}}&#x1f9e1;
+{{- else if eq $s "キーボード" -}}&#x2328;
+{{- else if eq $s "はなまる" -}}&#x1f4ae;
+{{- else if eq $s "錠前と鍵" -}}{{- emojify ":closed_lock_with_key:" -}}
+{{- else -}}{{ emojify $s }}{{- end -}}
+</abbr>{{- end -}}
