@@ -2,6 +2,12 @@
 {{- if gt $i 0 -}}&nbsp;{{- end -}}<abbr title="{{ $s }}">
 {{- if eq $s "ゴメン" -}}&#x1f647;
 {{- else if eq $s "ふむむ" -}}&#x1f914;
+{{- else if eq $s "おやすみ" -}}{{- emojify ":zzz:" -}}
+{{- else if eq $s "おこ" -}}{{- emojify ":anger:" -}}
+{{- else if eq $s "まじすか" -}}{{- emojify ":sweat_drops:" -}}
+{{- else if eq $s "星" -}}{{- emojify ":star:" -}}
+{{- else if eq $s "電球" -}}{{- emojify ":bulb:" -}}
+{{- else if eq $s "音符" -}}{{- emojify ":musical_note:" -}}
 {{- else if eq $s "はぁと" -}}&#x1f9e1;
 {{- else if eq $s "キーボード" -}}&#x2328;
 {{- else if eq $s "はなまる" -}}&#x1f4ae;
