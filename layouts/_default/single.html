@@ -2,7 +2,7 @@
 <head prefix="og: http://ogp.me/ns#">{{ $title := .Title | plainify }}{{ $siteTitle := .Site.Title | plainify }}{{ $desc := .Description | plainify | safeHTML }}
 {{ partial "header.html" . }}
 <title>{{ $title }} | {{ $siteTitle }}</title>
-<meta property="og:title" content="{{ $title }} | {{ $siteTitle }}">
+<meta property="og:title" content="{{ $title }}">
 <meta name="description" content="{{ $desc }}">
 <meta property="og:description" content="{{ $desc }}">
 <meta property="og:image" content="{{ with .Params.image }}{{ . | absURL }}{{ else }}{{ .Site.Data.site.image | absURL }}{{ end }}">{{ with .Site.Data.author }}{{ if .name }}

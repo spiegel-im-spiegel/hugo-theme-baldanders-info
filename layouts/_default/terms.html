@@ -2,8 +2,9 @@
 <head prefix="og: http://ogp.me/ns#">{{ $title := .Title | plainify | title }}{{ $siteTitle := .Site.Title | plainify }}
 {{ partial "header.html" . }}{{ with .AlternativeOutputFormats.Get "RSS" }}
 <link rel="alternate" href="{{ .Permalink }}" type="application/rss+xml" title="List of {{ $title }} | {{ $siteTitle }}">{{ end }}
-<title>List of {{ $title }} | {{ $siteTitle }}</title>
-<meta property="og:title" content="List of {{ $title }} | {{ .Site.Title | safeHTML }}">
+<meta name="robots" content="noindex">
+<title>{{ $title }} Cloud | {{ $siteTitle }}</title>
+<meta property="og:title" content="List of {{ $title }}">
 <meta name="description" content="List of {{ $title }}">
 <meta property="og:description" content="List of {{ $title }}">{{ with .Site.Data.author }}{{ if .avatar }}
 <meta property="og:image" content="{{ .avatar | absURL }}">{{ end }}{{ end }}
@@ -18,7 +19,7 @@
 
 <main>
 <article>
-<h1>List of {{ $title }}</h1>
+<h1>{{ $title }} Cloud</h1>
 <ul class="cloud">{{ $plural := .Data.Plural }}{{ range $k, $v := .Data.Terms }}{{ $count := len $v }}{{ $sz := add (math.Round (mul (math.Log $count) 5)) 5 }}{{ $key := $k | lower | urlize }}{{ $keyURL := printf "/%s/%s/" $plural $key }}
 	<li style="font-size:{{ $sz }}pt;"><a href="{{ $keyURL | absURL }}" title="{{ $key }} ({{ $count }})">{{ $key }}</a></li>{{ end }}
 </ul>
