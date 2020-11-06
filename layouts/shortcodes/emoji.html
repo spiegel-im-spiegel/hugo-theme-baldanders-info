@@ -1,7 +1,7 @@
 {{- range $i, $s := .Params -}}
 {{- if gt $i 0 -}}&nbsp;{{- end -}}<abbr class="emoji-chars" title="{{ $s }}">
 {{- if eq $s "ゴメン" -}}&#x1f647;
-{{- if eq $s "ペコン" -}}&#x1f647;
+{{- else if eq $s "ペコン" -}}&#x1f647;
 {{- else if eq $s "ふむむ" -}}&#x1f914;
 {{- else if eq $s "おやすみ" -}}{{- emojify ":zzz:" -}}
 {{- else if eq $s "おこ" -}}{{- emojify ":anger:" -}}
