@@ -2,5 +2,5 @@
 {{- with .Get "class" -}}<div class="{{ . }}">{{- end -}}
 {{ with .Get "link" }}<a href="{{ . }}">{{ end }}<img src="{{ .Get "src" }}" srcset="{{ .Get "src" }}{{ with .Get "width" }} {{ . }}{{ else }} 500{{ end }}w" sizes="(min-width:600px) 500px, 80vw"{{ if .Get "title" }} alt="{{ .Get "title" }}"{{ else if .Get "alt" }} alt="{{ .Get "alt" }}"{{ else }} alt=""{{ end }}>{{ with .Get "link" }}</a>{{ end }}{{ if .Get "title" }}
 {{- with .Get "class" -}}</div>{{- end -}}
-<figcaption>{{ with .Get "link" }}<a href="{{ . }}">{{ end }}{{ .Get "title" }}{{ with .Get "link" }}</a>{{ end }}</figcaption>
+<figcaption><div>{{ with .Get "link" }}<a href="{{ . }}">{{ end }}{{ .Get "title" }}{{ with .Get "link" }}</a>{{ end }}</div></figcaption>
 {{ end }}</figure>
