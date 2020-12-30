@@ -2,7 +2,7 @@
 /**
  * text-baldanders-dark.css -- Cascading Style Sheet (for dark mode)
  */
-@import url("./chroma-styles-dark.css"); /* for dark mode */
+@import url("./chroma-styles-light.css"); /* for dark mode */
 @import url("./main.css");
 @import url("./baldanders-info.css");
 :root {
@@ -19,30 +19,30 @@
   --dark-text-color: lavender;
   --dark-background-color: rgb(20, 20, 40);
   /* root style */
-  --root-text-color: lavender;
-  --root-background-color: rgb(20, 20, 40);
+  --root-text-color: black;
+  --root-background-color: rgb(255,248,231);
   /* default style */
-  --default-text-color: lavender;
-  --default-link-color: lightskyblue;
-  --default-visited-color: lightskyblue;
-  --default-caution-color: coral;
+  --default-text-color: black;
+  --default-link-color: blue;
+  --default-visited-color: #000080;
+  --default-caution-color: red;
   --default-background-color: transparent;
-  --default-border-color: slategray;
+  --default-border-color: gray;
   /* header style */
-  --header-text-color: wheat;
+  --header-text-color: green;
   --header-background-color: transparent;
   /* table style */
-  --table-border-color: slategray;
+  --table-border-color: gray;
   --table-header-text-color: inherit;
-  --table-header-background-color: darkslategray;
+  --table-header-background-color: lightgray;
   /* icons */
-  --icon-text-github: white;
-  --icon-text-share: slategray;
+  --icon-text-github: black;
+  --icon-text-share: darkgray;
   --icon-text-twitter: dodgerblue;
-  --icon-text-medium: lavender;
-  --icon-text-tumblr: lavender;
-  --icon-text-instagram: coral;
-  --icon-text-flickr: white;
+  --icon-text-medium: black;
+  --icon-text-tumblr: gray;
+  --icon-text-instagram: mediumvioletred;
+  --icon-text-flickr: mediumblue;
   --icon-text-facebook: royalblue;
   --icon-text-linkedin: steelblue;
   --icon-text-envelope: inherit;
