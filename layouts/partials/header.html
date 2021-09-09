@@ -4,7 +4,10 @@
 <link rel="icon" type="image/x-icon" href="{{ . }}">{{ end }}{{ with .favicon16png }}
 <link rel="icon" type="image/png" sizes="16x16" href="{{ . }}">{{ end }}{{ with .favicon32png }}
 <link rel="icon" type="image/png" sizes="32x32" href="{{ . }}">{{ end }}{{ with .favicon96png }}
-<link rel="icon" type="image/png" sizes="96x96" href="{{ . }}">{{ end }}{{ end }}
+<link rel="icon" type="image/png" sizes="96x96" href="{{ . }}">{{ end }}{{ with .favicon144png }}
+<link rel="apple-touch-icon" type="image/png" sizes="144x144" href="{{ . }}">{{ end }}{{ with .favicon192png }}
+<link rel="icon" type="image/png" sizes="192x192"  href="{{ . }}">{{ end }}{{ with .faviconmanifest }}
+<link rel="manifest" href="{{ . }}">{{ end }}{{ end }}
 <link rel="canonical" href="{{ .Permalink }}">
 {{ partial "header-fonts.html" . }}
 {{ partial "header-styles.html" . }}{{ if $.IsPage }}
