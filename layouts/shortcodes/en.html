@@ -1,0 +1,1 @@
+<span lang="en"{{ with .Get "class" }} class="{{ . }}"{{ end }}>{{ with .Get "type" }}{{ $.Inner | $.Page.RenderString (dict "display" "block" "markup" .) }}{{ else }}{{ .Inner }}{{ end }}</span>
