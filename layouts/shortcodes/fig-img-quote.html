@@ -1,6 +1,6 @@
 <figure{{ with .Get "lang" }} lang="{{ . }}"{{ end }}>
 <blockquote class="nobox{{ with .Get "class" }} {{ . }}{{ end }}" style='margin:0 auto;text-align:center;'>
-{{ with .Get "link" }}<a href="{{ . }}">{{ end }}<img src="{{ .Get "src" }}" srcset="{{ .Get "src" }}{{ with .Get "width" }} {{ . }}{{ else }} 500{{ end }}w" sizes="(min-width:600px) 500px, 80vw"{{ if .Get "title" }} alt="{{ .Get "title" }}"{{ else if .Get "alt" }} alt="{{ .Get "alt" }}"{{ else }} alt=""{{ end }}>{{ with .Get "link" }}</a>{{ end }}
+{{ with .Get "link" }}<a href="{{ . }}">{{ end }}<img src="{{ .Get "src" }}" srcset="{{ .Get "src" }}{{ with .Get "width" }} {{ . }}{{ else }} 500{{ end }}w" sizes="(min-width:600px) 500px, 80vw"{{ if .Get "title" }} alt="{{ .Get "title" }}"{{ else if .Get "alt" }} alt="{{ .Get "alt" }}"{{ else }} alt=""{{ end }} loading="lazy">{{ with .Get "link" }}</a>{{ end }}
 </blockquote>{{ if .Get "title"}}
 <figcaption><div>{{ with .Get "lang" }}via {{ else }}{{ end }}<q>{{ with .Get "link"}}<a href="{{.}}">{{ end }}{{ .Get "title" }}{{ with .Get "link"}}</a>{{ end }}</q>{{ with .Get "lang" }}{{ else }}より{{ end }}</div></figcaption>
 {{ end }}</figure>
