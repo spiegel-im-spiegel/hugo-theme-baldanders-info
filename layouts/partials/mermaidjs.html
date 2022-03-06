@@ -1,6 +1,6 @@
 {{- if .IsPage -}}{{- with .Params.scripts -}}{{- if .mermaidjs -}}
 {{- $scratch := newScratch -}}{{- $scratch.Set "mtheme" "neutral" -}}{{- with $.Site.Data.site -}}{{- if eq .styles "dark" -}}{{- $scratch.Set "mtheme" "dark" -}}{{- end -}}{{- end -}}
-<script src="https://unpkg.com/mermaid@8.14.0/dist/mermaid.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>
   mermaid.initialize({startOnLoad: true, fontFamily: "sans-serif", theme: '{{ $scratch.Get "mtheme" }}', sequence: {height: 40, mirrorActors: false}});
 </script>
