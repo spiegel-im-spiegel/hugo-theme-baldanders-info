@@ -1,6 +1,8 @@
 <span>{{- range $i, $s := .Params -}}
 {{- if gt $i 0 -}}&nbsp;{{- end -}}
 {{- if eq $s "check" -}}<i class="fa-solid fa-check"></i>{{- end -}}
+{{- if eq $s "square" -}}<i class="fa-regular fa-square"></i>{{- end -}}
+{{- if eq $s "square-check" -}}<i class="fa-regular fa-square-check"></i>{{- end -}}
 {{- if eq $s "rss" -}}<i class="fa-solid fa-rss"></i>{{- end -}}
 {{- if eq $s "share" -}}<span class="share-color"><i class="fa-solid fa-share-from-square"></i></span>{{- end -}}
 {{- if eq $s "github" -}}<span class="github-color"><i class="fa-brands fa-github"></i></span>{{- end -}}
