@@ -7,5 +7,6 @@
 	{{- with .tumblr }}<li><a href="http://{{ . }}.tumblr.com/"><span class="tumblr-color"><i class="fab fa-tumblr"></i></span></a></li>{{ end -}}
 	{{- with .instagram }}<li><a href="http://instagram.com/{{ . }}"><span class="instagram-color"><i class="fab fa-instagram"></i></span></a></li>{{ end -}}
 	{{- with .linkedin }}<li><a href="https://jp.linkedin.com/in/{{ . }}"><span class="linkedin-color"><i class="fab fa-linkedin-in"></i></span></a></li>{{ end -}}
+	{{- with .mastodon }}<li><a href="https://{{ . }}"><span class="mastodon-color"><i class="fa-brands fa-mastodon"></i></span></a></li>{{ end -}}
 	{{- with .email }}<li><a href="mailto:{{ . }}"><span class="envelope-color"><i class="fas fa-envelope"></i></span></a></li>{{ end -}}
 </ul>

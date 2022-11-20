@@ -9,6 +9,7 @@
 <meta property="og:description" content="List of {{ $title }}">{{ with .Site.Data.author }}{{ if .avatar }}
 <meta property="og:image" content="{{ .avatar | absURL }}">{{ end }}{{ end }}
 {{ partial "twitter-card.html" . }}
+{{ partial "mastodon-me.html" . }}
 
 {{ partial "json-ld-term.html" . }}
 </head>
