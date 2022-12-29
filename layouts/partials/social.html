@@ -1,12 +1,12 @@
 <ul class="social">
 	{{- with .github }}<li><a rel="me" href="https://github.com/{{ . }}"><span class="github-color"><i class="fab fa-github"></i></span></a></li>{{ end -}}
 	{{- with .flickr }}<li><a rel="me" href="https://www.flickr.com/photos/{{ . }}/"><span class="flickr-color"><i class="fab fa-flickr"></i></span></a></li>{{ end -}}
-	{{- with .twitter }}<li><a rel="me" href="https://twitter.com/{{ . }}"><span class="twitter-color"><i class="fab fa-twitter"></i></span></a></li>{{ end -}}
-	{{- with .facebook }}<li><a rel="me" href="https://www.facebook.com/{{ . }}"><span class="facebook-color"><i class="fab fa-facebook-f"></i></span></a></li>{{ end -}}
+	{{- with .instagram }}<li><a rel="me" href="http://instagram.com/{{ . }}"><span class="instagram-color"><i class="fab fa-instagram"></i></span></a></li>{{ end -}}
 	{{- with .medium }}<li><a rel="me" href="https://medium.com/{{ . }}"><span class="medium-color"><i class="fab fa-medium-m"></i></span></a></li>{{ end -}}
 	{{- with .tumblr }}<li><a rel="me" href="http://{{ . }}.tumblr.com/"><span class="tumblr-color"><i class="fab fa-tumblr"></i></span></a></li>{{ end -}}
-	{{- with .instagram }}<li><a rel="me" href="http://instagram.com/{{ . }}"><span class="instagram-color"><i class="fab fa-instagram"></i></span></a></li>{{ end -}}
-	{{- with .linkedin }}<li><a rel="me" href="https://jp.linkedin.com/in/{{ . }}"><span class="linkedin-color"><i class="fab fa-linkedin-in"></i></span></a></li>{{ end -}}
 	{{- with .mastodon }}<li><a rel="me" href="https://{{ . }}"><span class="mastodon-color"><i class="fa-brands fa-mastodon"></i></span></a></li>{{ end -}}
+	{{- with .twitter }}<li><a rel="me" href="https://twitter.com/{{ . }}"><span class="twitter-color"><i class="fab fa-twitter"></i></span></a></li>{{ end -}}
+	{{- with .facebook }}<li><a rel="me" href="https://www.facebook.com/{{ . }}"><span class="facebook-color"><i class="fab fa-facebook-f"></i></span></a></li>{{ end -}}
+	{{- with .linkedin }}<li><a rel="me" href="https://jp.linkedin.com/in/{{ . }}"><span class="linkedin-color"><i class="fab fa-linkedin-in"></i></span></a></li>{{ end -}}
 	{{- with .email }}<li><a rel="me" href="mailto:{{ . }}"><span class="envelope-color"><i class="fas fa-envelope"></i></span></a></li>{{ end -}}
 </ul>
