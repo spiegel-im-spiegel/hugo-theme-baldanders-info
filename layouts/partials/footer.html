@@ -7,7 +7,7 @@
 	</div>
 	<div class="userinfo-info" id="maker">
 		{{ $type }} by <a href="{{ .url | absURL }}" rel="cc:attributionURL" property="cc:attributionName">{{ .name }}</a>
-		{{ if or $.IsHome $.IsNode }}{{ with $.Site.Data.site }}, <time property='dc:dateCopyrighted'>{{ .since | dateFormat "2006" }}</time>-<time property='dc:modified'>{{ $.Site.LastChange | dateFormat "2006" }}</time>{{ end }}{{ else }}in <time property='dc:dateCopyrighted'>{{ $pubdate }}</time>{{ if ne $pubdate $update }} (revised in {{ $update }}){{ end }}{{ end }}
+		{{ if or $.IsHome $.IsNode }}{{ with $.Site.Data.site }}, <time property='dc:dateCopyrighted'>{{ .since | dateFormat "2006" }}</time>-<time property='dc:modified'>{{ $.Site.Lastmod | dateFormat "2006" }}</time>{{ end }}{{ else }}in <time property='dc:dateCopyrighted'>{{ $pubdate }}</time>{{ if ne $pubdate $update }} (revised in {{ $update }}){{ end }}{{ end }}
 		{{ with $.Params.license }}{{ partial "cc-license.html" . }}{{ else }}{{ with .license }}{{ partial "cc-license.html" . }}{{ end }}{{ end }}
 		{{ partial "social.html" . }}
 	</div>
