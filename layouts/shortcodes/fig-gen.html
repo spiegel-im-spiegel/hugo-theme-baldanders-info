@@ -1,3 +1,6 @@
-<figure style='margin:0 auto;text-align:center;'>{{ with .Get "type" }}{{ $.Inner | $.Page.RenderString (dict "markup" .) }}{{ else }}{{ .Inner }}{{ end }}{{ if .Get "title"}}
+<figure style='margin:0 auto;text-align:center;'>
+{{- with .Get "class" -}}<div class="{{ . }}">{{- end -}}
+{{ with .Get "type" }}{{ $.Inner | $.Page.RenderString (dict "markup" .) }}{{ else }}{{ .Inner }}{{ end }}
+{{- with .Get "class" -}}</div>{{- end -}}{{ if .Get "title" }}
 <figcaption><div>{{ with .Get "link"}}<a href="{{.}}">{{ end }}{{ .Get "title" }}{{ with .Get "link"}}</a>{{ end }}</div></figcaption>
 {{ end }}</figure>
