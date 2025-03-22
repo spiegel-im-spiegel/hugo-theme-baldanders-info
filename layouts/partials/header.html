@@ -8,7 +8,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="144x144" href="{{ . }}">{{ end }}{{ with .favicon192png }}
 <link rel="icon" type="image/png" sizes="192x192"  href="{{ . }}">{{ end }}{{ with .faviconmanifest }}
 <link rel="manifest" href="{{ . }}">{{ end }}{{ end }}
-<link rel="canonical" href="{{ .Permalink }}">
+<link rel="canonical" href="{{ with .Params.canonical }}{{ with .url }}{{ . | absURL }}{{ else }}{{ .Permalink }}{{ end }}{{ else }}{{ .Permalink }}{{ end }}">
 {{ partial "header-fonts.html" . }}
 {{ partial "header-styles.html" . }}{{ if $.IsPage }}
 {{ with .Params.scripts }}{{ if .mathjax }}{{ partial "mathjax.html" $ }}{{ end }}{{ if .jsx }}{{ partial "jsx.html" $ }}{{ end }}{{ else }}{{ partial "mathjax.html" $ }}{{ end }}{{end }}{{ with .Site.Home.AlternativeOutputFormats.Get "RSS" }}
