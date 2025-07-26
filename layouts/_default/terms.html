@@ -1,9 +1,9 @@
 {{ partial "top.html" . }}
 <head prefix="og: http://ogp.me/ns#">{{ $title := .Title | plainify | title }}{{ $siteTitle := .Site.Title | plainify }}
 {{ partial "header.html" . }}{{ with .AlternativeOutputFormats.Get "RSS" }}
-<link rel="alternate" href="{{ .Permalink }}" type="application/rss+xml" title="List of {{ $title }} | {{ $siteTitle }}">{{ end }}
+<link rel="alternate" href="{{ .Permalink }}" type="application/rss+xml" title="List of {{ $title }} [{{ $siteTitle }}]">{{ end }}
 <meta name="robots" content="noindex">
-<title>{{ $title }} Cloud | {{ $siteTitle }}</title>
+<title>{{ $title }} Cloud [{{ $siteTitle }}]</title>
 <meta property="og:title" content="List of {{ $title }}">
 <meta name="description" content="List of {{ $title }}">
 <meta property="og:description" content="List of {{ $title }}">{{ with .Site.Data.author }}{{ if .avatar }}
