@@ -1,8 +1,11 @@
 <script>
 MathJax = {
+  loader: {
+    load: ['[tex]/ams', '[tex]/textcomp']
+  },
   tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']],
-    processEscapes: true,
+    packages: {'[+]': ['ams', 'textcomp']},
+    inlineMath: {'[+]': [['$', '$']]},
     tags: 'ams',
     macros: {
       ssqrt: ['\\sqrt{\\smash[b]{\\mathstrut #1}}', 1],
@@ -17,7 +20,10 @@ MathJax = {
     matchFontHeight: false,
     displayAlign: "left",
     displayIndent: "2em"
+  },
+  output: {
+    font: 'mathjax-stix2'
   }
 };
 </script>
-<script id="MathJax-script" async src="//cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>
+<script defer src="//cdn.jsdelivr.net/npm/mathjax@4/tex-chtml-nofont.js"></script>
