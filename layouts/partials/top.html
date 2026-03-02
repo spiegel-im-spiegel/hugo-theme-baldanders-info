@@ -1,2 +1,2 @@
 <!DOCTYPE html>
-{{ with .Site.LanguageCode }}<html lang="{{ . }}">{{ else }}<html>{{ end }}
+{{ with .Params.Language.Code }}<html lang="{{ . }}">{{ else }}{{ with .Language.Lang }}<html lang="{{ . }}">{{ else }}<html>{{ end }}{{ end }}
