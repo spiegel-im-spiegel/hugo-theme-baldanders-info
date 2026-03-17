@@ -21,6 +21,6 @@
 			{{ with .url }}<uri>{{ . }}</uri>{{ end }}
 		</author>
 		{{ partial "ccl-rss.html" .license }}{{ end }}
-		<content type="html"{{ with .Site.LanguageCode }} xml:lang="{{ . }}"{{ end }} xml:base="{{ .Site.BaseURL }}">{{ .Content | html }}</content>
+		<content type="html"{{ with .Site.Language.Locale }} xml:lang="{{ . }}"{{ end }} xml:base="{{ .Site.BaseURL }}">{{ .Content | html }}</content>
 	</entry>{{ end }}
 </feed>

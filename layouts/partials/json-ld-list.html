@@ -5,7 +5,7 @@
 	"@type": "WebPage",
 	"@id": {{ $secURL | absURL }},
 	"url": {{ $secURL | absURL }},
-	"inLanguage": {{ .Site.LanguageCode }},
+	"inLanguage": {{ .Site.Language.Locale }},
 	"name": {{ $secTitle }},
 	"description": {{ $secTitle }},
 	"publisher": {
@@ -46,7 +46,7 @@
 	"@type": "WebPage",
 	"@id": {{ .Permalink }},
 	"url": {{ .Permalink }},
-	"inLanguage": {{ .Site.LanguageCode }},
+	"inLanguage": {{ .Site.Language.Locale }},
 	"name": "Entries of {{ .Title }}{{ with .Data.Plural }} in {{ . | humanize }}{{ end }}",
 	"description": "Entries of {{ .Title }}{{ with .Data.Plural }} in {{ . | humanize }}{{ end }}",
 	"publisher": {

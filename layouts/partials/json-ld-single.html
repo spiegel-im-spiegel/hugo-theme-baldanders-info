@@ -5,7 +5,7 @@
 	"@type": "Blog",
 	"@id": {{ $secURL }},
 	"url": {{ $secURL }},
-	"inLanguage": {{ .Site.LanguageCode }},
+	"inLanguage": {{ .Site.Language.Locale }},
 	"name": {{ $secTitle }},
 	"description": {{ $secTitle }}{{ with .Site.Data.author }},
 	"publisher": {
@@ -47,7 +47,7 @@
 	"@id": {{ .Permalink }},
 	"url": {{ .Permalink }},
 	"mainEntityOfPage": {{ .Permalink }},
-	"inLanguage": {{ .Site.LanguageCode }},
+	"inLanguage": {{ .Site.Language.Locale }},
 	"name": {{ .Title }},
 	"description": {{ .Description }},
 	"headline": {{ .Description }}{{if .Params.tags }},
