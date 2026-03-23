@@ -1,1 +1,4 @@
-{{ with .Site.Data.author }}{{ with .mastodon }}<link rel="me" href="https://{{ . }}">{{ end }}{{ end }}
+{{ with .Site.Data.author }}{{ with .mastodon -}}
+<link rel="me" href="https://{{ . }}">
+<link rel="stylesheet" href="/mstdn_share/mstdn_share.css">
+<script src="/mstdn_share/mstdn_share.js"></script>{{ end }}{{ end }}
