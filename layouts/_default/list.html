@@ -6,7 +6,7 @@
 <title>Entries in {{ $title }} [{{ $siteTitle }}]</title>
 <meta property="og:title" content="Entries in {{ $title }}">
 <meta name="description" content="Entries in {{ $title }}">
-<meta property="og:description" content="Entries in {{ $title }}">{{ with .Site.Data.author }}{{ if .avatar }}
+<meta property="og:description" content="Entries in {{ $title }}">{{ with hugo.Data.author }}{{ if .avatar }}
 <meta property="og:image" content="{{ .avatar | absURL }}">{{ end }}{{ end }}
 {{ partial "twitter-card.html" . }}
 

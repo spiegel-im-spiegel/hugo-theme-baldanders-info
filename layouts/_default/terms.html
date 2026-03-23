@@ -6,7 +6,7 @@
 <title>{{ $title }} Cloud [{{ $siteTitle }}]</title>
 <meta property="og:title" content="List of {{ $title }}">
 <meta name="description" content="List of {{ $title }}">
-<meta property="og:description" content="List of {{ $title }}">{{ with .Site.Data.author }}{{ if .avatar }}
+<meta property="og:description" content="List of {{ $title }}">{{ with hugo.Data.author }}{{ if .avatar }}
 <meta property="og:image" content="{{ .avatar | absURL }}">{{ end }}{{ end }}
 {{ partial "twitter-card.html" . }}
 {{ partial "mastodon-me.html" . }}

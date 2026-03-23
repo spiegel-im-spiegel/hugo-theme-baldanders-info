@@ -1,5 +1,5 @@
-{{ $pageType := "text"}}{{ if .IsPage }}{{ if .Params.pageType }}{{ $pageType = (.Params.pageType | lower) }}{{ else if .Site.Data.site.siteType }}{{ $pageType = (.Site.Data.site.siteType | lower) }}{{ end }}{{ end }}
+{{ $pageType := "text"}}{{ if .IsPage }}{{ if .Params.pageType }}{{ $pageType = (.Params.pageType | lower) }}{{ else if hugo.Data.site.siteType }}{{ $pageType = (hugo.Data.site.siteType | lower) }}{{ end }}{{ end }}
 {{ $twitterType := "summary"}}{{ if eq $pageType "photo" }}{{ $twitterType = "summary_large_image"}}{{ end }}
-<meta name="twitter:card" content="{{ $twitterType }}">{{ with .Site.Data.author }}{{ with .twitter }}
+<meta name="twitter:card" content="{{ $twitterType }}">{{ with hugo.Data.author }}{{ with .twitter }}
 <meta name="twitter:site" content="@{{ . }}">
 <meta name="twitter:creator" content="@{{ . }}">{{ end }}{{ end }}

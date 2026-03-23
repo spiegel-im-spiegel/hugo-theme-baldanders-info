@@ -3,8 +3,8 @@
 	<link rel="alternate" type="text/html" href="{{ .Permalink }}" />{{ with .OutputFormats.Get "RSS" }}
 	<link rel="self" type="application/atom+xml" href="{{ .Permalink }}" />{{ end }}
 	<id>tag:{{ $siteTitle }},{{ .Date.Format "2006-01-02" }}:/</id>
-	<updated>{{ .Site.Lastmod.UTC.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>{{ with .Site.Data.site }}
-	{{ with .description }}<subtitle>{{ . | plainify }}</subtitle>{{ end }}{{ end }}{{ with .Site.Data.author }}{{ with .avatar }}
+	<updated>{{ .Site.Lastmod.UTC.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>{{ with hugo.Data.site }}
+	{{ with .description }}<subtitle>{{ . | plainify }}</subtitle>{{ end }}{{ end }}{{ with hugo.Data.author }}{{ with .avatar }}
 	<icon>{{ . | absURL }}</icon>
 	<logo>{{ . | absURL}}</logo>{{ end }}{{ end }}
 
@@ -15,7 +15,7 @@
 		<id>tag:{{ $siteTitle }},{{ .Date.Format "2006-01-02" }}:{{ .RelPermalink }}</id>
 		<published>{{ .Date.UTC.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</published>
 		<updated>{{ .Lastmod.UTC.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>{{ with .Description }}
-		<summary>{{ . | plainify }}</summary>{{ end }}{{ with $.Site.Data.author }}
+		<summary>{{ . | plainify }}</summary>{{ end }}{{ with hugo.Data.author }}
 		<author>
 			{{ with .name }}<name>{{ . | plainify }}</name>{{ end }}
 			{{ with .url }}<uri>{{ . }}</uri>{{ end }}

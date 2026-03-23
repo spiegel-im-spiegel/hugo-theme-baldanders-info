@@ -5,7 +5,7 @@
 <meta property="og:title" content="{{ $title }}">
 <meta name="description" content="{{ $desc }}">
 <meta property="og:description" content="{{ $desc }}">
-<meta property="og:image" content="{{ with .Params.image }}{{ . | absURL }}{{ else }}{{ .Site.Data.site.image | absURL }}{{ end }}">{{ with .Site.Data.author }}{{ if .name }}
+<meta property="og:image" content="{{ with .Params.image }}{{ . | absURL }}{{ else }}{{ hugo.Data.site.image | absURL }}{{ end }}">{{ with hugo.Data.author }}{{ if .name }}
 <meta name="author" content="{{ .name }}">{{ end }}{{ end }}
 {{ partial "twitter-card.html" . }}
 {{ partial "mastodon-me.html" . }}

@@ -2,7 +2,7 @@
 <head prefix="og: http://ogp.me/ns#">
 {{ partial "header.html" . }}
 <title>{{ .Site.Title | plainify }}</title>
-<meta property="og:title" content="{{ .Site.Title | plainify }}">{{ with .Site.Data.site }}{{ with .description }}
+<meta property="og:title" content="{{ .Site.Title | plainify }}">{{ with hugo.Data.site }}{{ with .description }}
 <meta name="description" content="{{ . | plainify | safeHTML }}">
 <meta property="og:description" content="{{ . | plainify | safeHTML }}">{{ end }}{{ with .image }}
 <meta property="og:image" content="{{ . | absURL }}">{{ end }}{{ end }}

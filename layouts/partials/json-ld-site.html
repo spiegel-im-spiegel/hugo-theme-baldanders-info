@@ -11,11 +11,11 @@
 	},
 	"author": {
 		"@id": {{ $maker }}
-	}{{ with .Site.Data.site }}{{ with .image }},
+	}{{ with hugo.Data.site }}{{ with .image }},
 	"image": {{ . | absURL }}{{ end }}{{ with .description }},
 	"description": {{ . }}{{ end }}{{ end }}
 }
-</script>{{ with .Site.Data.author }}
+</script>{{ with hugo.Data.author }}
 <script type="application/ld+json">
 {
 	"@context": "http://schema.org",

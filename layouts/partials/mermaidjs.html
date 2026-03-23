@@ -1,5 +1,5 @@
 {{- if .IsPage -}}{{- with .Params.scripts -}}{{- if .mermaidjs -}}
-{{- $scratch := newScratch -}}{{- $scratch.Set "mtheme" "neutral" -}}{{- with $.Site.Data.site -}}{{- if eq .styles "dark" -}}{{- $scratch.Set "mtheme" "dark" -}}{{- end -}}{{- end -}}
+{{- $scratch := newScratch -}}{{- $scratch.Set "mtheme" "neutral" -}}{{- with hugo.Data.site -}}{{- if eq .styles "dark" -}}{{- $scratch.Set "mtheme" "dark" -}}{{- end -}}{{- end -}}
 <script type="module">
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
   mermaid.initialize({startOnLoad: true, fontFamily: "sans-serif", theme: '{{ $scratch.Get "mtheme" }}', sequence: {height: 40, mirrorActors: false}});
