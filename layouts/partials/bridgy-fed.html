@@ -1,1 +1,2 @@
 <link rel="me" href="https://web.brid.gy/{{ .Site.Title | urlize }}">
+{{ with hugo.Data.site.siteDID }}<link rel="site.standard.document" href="at://{{ . }}/site.standard.document{{ $.RelPermalink }}" />{{ end }}
