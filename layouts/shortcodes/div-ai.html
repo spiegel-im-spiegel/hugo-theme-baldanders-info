@@ -1,1 +1,1 @@
-<div class="by-ai{{ with .Get "class" }} {{ . }}{{ end }}"{{ with .Get "lang" }} lang="{{ . }}"{{ end }}>{{ with .Get "type" }}{{ $.Inner | $.Page.RenderString (dict "markup" .) }}{{ else }}{{ .Inner }}{{ end }}</div>
+<div class="by-ai smaller{{ with .Get "class" }} {{ . }}{{ end }}"{{ with .Get "lang" }} lang="{{ . }}"{{ end }}>{{ with .Get "type" }}{{ $.Inner | $.Page.RenderString (dict "markup" .) }}{{ else }}{{ .Inner }}{{ end }}</div>
