@@ -3,7 +3,7 @@
 {{ $pubdate := .Date.Format "2006-01-02" }}{{ $update := .Lastmod.Format "2006-01-02" }}
 {{ with hugo.Data.author }}{{ $imgURL := "/images/avatar.png" }}{{ with .avatar }}{{$imgURL = . }}{{ end }}<div class="userinfo h-card">
 	<div class="userinfo-avater">
-		<a class="u-url" rel="me" href="{{ .url | absURL }}"><img class="u-photo" src="{{ $imgURL | absURL }}" width="48" height="48" alt="avatar" id="logo"></a>
+		<a class="u-url" rel="me" href="{{ .url | absURL }}"><img class="u-photo" src="{{ $imgURL | absURL }}" width="48" height="48" alt="" id="logo"></a>
 	</div>
 	<div class="userinfo-info" id="maker">
 		{{ $type }} by <a href="{{ .url | absURL }}" rel="cc:attributionURL" property="cc:attributionName">{{ .name }}</a>
