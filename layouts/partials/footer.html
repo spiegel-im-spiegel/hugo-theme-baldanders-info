@@ -1,5 +1,5 @@
 <footer><!-- Footer Section -->
-{{ $type := "Product" }}{{ if $.IsPage }}{{ if .Params.pageType }}{{ $type = .Params.pageType | humanize | title }}{{ else if hugo.Data.site.siteType }}{{ $type = hugo.Data.site.siteType | humanize | title }}{{ end }}{{ end }}
+{{ $type := "Contents" }}{{ if $.IsPage }}{{ if .Params.pageType }}{{ $type = .Params.pageType | humanize | title }}{{ else if hugo.Data.site.siteType }}{{ $type = hugo.Data.site.siteType | humanize | title }}{{ end }}{{ end }}
 {{ $pubdate := .Date.Format "2006-01-02" }}{{ $update := .Lastmod.Format "2006-01-02" }}
 {{ with hugo.Data.author }}{{ $imgURL := "/images/avatar.png" }}{{ with .avatar }}{{$imgURL = . }}{{ end }}<div class="userinfo h-card">
 	<div class="userinfo-avater">
