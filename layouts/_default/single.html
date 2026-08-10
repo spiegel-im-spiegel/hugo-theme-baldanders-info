@@ -1,13 +1,20 @@
 {{ partial "top.html" . }}
-<head prefix="og: http://ogp.me/ns#">{{ $title := .Title | plainify }}{{ $siteTitle := .Site.Title | plainify }}{{ $desc := .Description | plainify | safeHTML }}
+<head prefix="og: http://ogp.me/ns#">{{ $title := .Title | plainify }}{{ $siteTitle := .Site.Title | plainify }}{{ $desc := .Description | plainify | safeHTML }}{{ $pubdate := .Date | time.In "UTC" | time.Format "2006-01-02T15:04:05Z07:00" }}{{ $update := .Lastmod | time.In "UTC" | time.Format "2006-01-02T15:04:05Z07:00" }}
 {{ partial "header.html" . }}
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="{{ $siteTitle }}">
 <title>{{ $title }} [{{ $siteTitle }}]</title>
 <meta property="og:title" content="{{ $title }}">
 <meta name="description" content="{{ $desc }}">
 <meta property="og:description" content="{{ $desc }}">
 <meta property="og:image" content="{{ with .Params.image }}{{ . | absURL }}{{ else }}{{ hugo.Data.site.image | absURL }}{{ end }}">{{ with hugo.Data.author }}{{ if .name }}
-<meta name="author" content="{{ .name }}">{{ end }}{{ end }}
-{{ partial "twitter-card.html" . }}
+<meta name="author" content="{{ .name }}">
+<meta property="article:author" content="{{ .name }}">{{ end }}{{ end }}{{ with .Params.tags }}
+<meta name="keywords" content='{{ delimit . ", " }}'>{{ range $value := . }}
+<meta property="article:tag" content="{{ $value }}">{{ end }}{{ end -}}
+<meta property="article:published_time" content="{{ $pubdate }}">
+<meta property="article:modified_time" content="{{ $update }}">
+{{- partial "twitter-card.html" . }}
 {{ partial "mastodon-me.html" . }}
 {{ partial "header-nav.html" . }}
 
