@@ -1,4 +1,5 @@
-{{ with hugo.Data.author }}{{ with .mastodon -}}
-<link rel="me" href="https://{{ . }}">
+{{ with hugo.Data.author -}}
+{{with .mastodonid }}<meta name="fediverse:creator" content="@{{ . }}">{{ end }}
+{{ with .mastodon }}<link rel="me" href="https://{{ . }}">
 <link rel="stylesheet" href="/mstdn_share/mstdn_share.css">
 <script src="/mstdn_share/mstdn_share.js"></script>{{ end }}{{ end }}
